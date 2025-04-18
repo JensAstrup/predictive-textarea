@@ -1,8 +1,6 @@
-import { Issue, LinearClient } from '@linear/sdk'
 import { config } from 'dotenv'
 import { execa } from 'execa'
 import { Octokit } from 'octokit'
-import OpenAI from 'openai'
 import ora from 'ora'
 
 import { getNewVersion } from './utils/get-new-version'
