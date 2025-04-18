@@ -4,7 +4,7 @@ import { execa } from 'execa'
 import { Octokit } from 'octokit'
 import ora from 'ora'
 
-import { getNewVersion } from './utils/get-new-version.js'
+import { getNewVersion } from './utils/get-new-version'
 
 
 config({ path: '.env.local' })
