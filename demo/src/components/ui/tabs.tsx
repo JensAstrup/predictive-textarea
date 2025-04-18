@@ -1,7 +1,10 @@
 'use client'
 
 import React, { useState, createContext, useContext } from 'react'
-import { cn } from '../../../../src/utils'
+import * as React from 'react'
+import * as TabsPrimitive from '@radix-ui/react-tabs'
+
+import { cn } from '../../utils/cn'
 
 interface TabsContextValue {
   selectedValue: string
@@ -63,7 +66,7 @@ function TabsList({ children, className }: TabsListProps): React.ReactElement {
 
 function Tab({ children, value, className }: TabProps): React.ReactElement {
   const { selectedValue, onSelect } = useTabsContext()
-  
+
   return (
     <button
       value={value}
@@ -81,7 +84,7 @@ function Tab({ children, value, className }: TabProps): React.ReactElement {
 
 function TabsContent({ value, children, className }: TabsContentProps): React.ReactElement | null {
   const { selectedValue } = useTabsContext()
-  
+
   if (selectedValue !== value) return null
 
   return (

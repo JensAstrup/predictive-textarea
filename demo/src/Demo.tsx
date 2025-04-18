@@ -1,5 +1,5 @@
 import React from 'react'
-import { PredictiveTextarea } from '../../src'
+import { PredictiveTextarea } from 'predictive-textarea'
 import './textarea-styles.css'
 import { ComponentShowcase } from './components/ui/component-showcase'
 
@@ -157,7 +157,7 @@ function Example() {
           </div>
         </div>
       </header>
-     
+
       <main className="container mx-auto px-6 py-8 flex-1">
         <div className="max-w-3xl mx-auto space-y-12">
           {/* Installation Section */}
@@ -226,14 +226,14 @@ function Example() {
               variant="card"
             />
           </section>
-          
+
           {/* Custom Styling Section */}
           <section className="space-y-4">
             <h2 className="text-xl font-semibold">Custom Prediction Styling</h2>
             <p className="text-muted-foreground">
               Customize the appearance of prediction text with custom classes.
             </p>
-            
+
             {/* Indigo Style */}
             <ComponentShowcase
               title="Indigo Style"
@@ -250,7 +250,7 @@ function Example() {
               code={indigoStyleCode}
               variant="card"
             />
-            
+
             {/* Subtle Style */}
             <ComponentShowcase
               title="Subtle Style"
@@ -267,7 +267,7 @@ function Example() {
               code={subtleStyleCode}
               variant="card"
             />
-            
+
             {/* Fancy Style */}
             <ComponentShowcase
               title="Fancy Style"
@@ -287,7 +287,7 @@ function Example() {
           </section>
         </div>
       </main>
-     
+
       <footer className="border-t border-border py-6">
         <div className="container mx-auto px-6">
           <p className="text-sm text-muted-foreground text-center">

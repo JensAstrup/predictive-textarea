@@ -6,6 +6,7 @@ on:
       - fix_demo_pages
     paths:
       - 'demo/**'
+      - 'src/**'
       - '.github/workflows/deploy-demo.yml'
 
 permissions:
@@ -36,12 +37,18 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Install dependencies
+      - name: Install root dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build main package
+        run: yarn build
+
+      - name: Install demo dependencies
         run: |
           cd demo
           yarn install --frozen-lockfile
 
-      - name: Build
+      - name: Build demo
         run: |
           cd demo
           yarn build
