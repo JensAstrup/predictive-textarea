@@ -2,6 +2,7 @@
   "name": "predictive-textarea",
   "version": "0.1.0",
   "description": "A rich text input with AI-powered autocomplete content predictions for React",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -18,8 +19,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "prepare-version": "ts-node --esm --project tsconfig.cli.json scripts/release-branch.ts prepare-version",
-    "create-release": "ts-node --esm --project tsconfig.cli.json scripts/release-branch.ts create-release"
+    "prepare-version": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/release-branch.ts prepare-version",
+    "create-release": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/release-branch.ts create-release"
   },
   "files": [
     "dist"
@@ -58,6 +59,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
+    "@types/node": "22.14.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/uuid": "^9.0.0",
@@ -80,6 +82,7 @@
     "react-dom": "^19.1.0",
     "ts-jest": "^29.3.2",
     "ts-node": "10.9.2",
+    "ts-node-esm": "0.0.6",
     "tsup": "^7.0.0",
     "typescript": "^5.0.0"
   },
