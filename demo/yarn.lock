@@ -931,6 +931,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"charenc@npm:0.0.2":
+  version: 0.0.2
+  resolution: "charenc@npm:0.0.2"
+  checksum: 10c0/a45ec39363a16799d0f9365c8dd0c78e711415113c6f14787a22462ef451f5013efae8a28f1c058f81fc01f2a6a16955f7a5fd0cd56247ce94a45349c89877d8
+  languageName: node
+  linkType: hard
+
 "chokidar@npm:^3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
@@ -1011,6 +1018,13 @@ __metadata:
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
   checksum: 10c0/053ea8b2135caff68a9e81470e845613e374e7309a47731e81639de3eaeb90c3d01af0e0b44d2ab9d50b43467223b88567dfeb3262db942dc063b9976718ffc1
+  languageName: node
+  linkType: hard
+
+"crypt@npm:0.0.2":
+  version: 0.0.2
+  resolution: "crypt@npm:0.0.2"
+  checksum: 10c0/adbf263441dd801665d5425f044647533f39f4612544071b1471962209d235042fb703c27eea2795c7c53e1dfc242405173003f83cf4f4761a633d11f9653f18
   languageName: node
   linkType: hard
 
@@ -1351,6 +1365,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hasharray@npm:^1.1.1":
+  version: 1.1.2
+  resolution: "hasharray@npm:1.1.2"
+  dependencies:
+    jclass: "npm:^1.0.1"
+  checksum: 10c0/99c21c889db747b9c0764c2c28ecea7e6e0e283e5a8bb8f77add2daab80fbab6f82b2eb1dbe6832811d39a037f04281db6db48bcc5d53f18232014d440593d02
+  languageName: node
+  linkType: hard
+
 "hasown@npm:^2.0.2":
   version: 2.0.2
   resolution: "hasown@npm:2.0.2"
@@ -1422,6 +1445,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-buffer@npm:~1.1.6":
+  version: 1.1.6
+  resolution: "is-buffer@npm:1.1.6"
+  checksum: 10c0/ae18aa0b6e113d6c490ad1db5e8df9bdb57758382b313f5a22c9c61084875c6396d50bbf49315f5b1926d142d74dfb8d31b40d993a383e0a158b15fea7a82234
+  languageName: node
+  linkType: hard
+
 "is-core-module@npm:^2.16.0":
   version: 2.16.1
   resolution: "is-core-module@npm:2.16.1"
@@ -1485,6 +1515,13 @@ __metadata:
     "@pkgjs/parseargs":
       optional: true
   checksum: 10c0/6acc10d139eaefdbe04d2f679e6191b3abf073f111edf10b1de5302c97ec93fffeb2fdd8681ed17f16268aa9dd4f8c588ed9d1d3bffbbfa6e8bf897cbb3149b9
+  languageName: node
+  linkType: hard
+
+"jclass@npm:^1.0.1":
+  version: 1.2.1
+  resolution: "jclass@npm:1.2.1"
+  checksum: 10c0/6083bd12c11c9919a28287c1cc74cd331bebd87c16e1d71bd96ee9733c71c189308c4fbf511434bcb67ee055638c08037af6d3d9f24542ac3b37552f5e89406c
   languageName: node
   linkType: hard
 
@@ -1586,6 +1623,17 @@ __metadata:
     promise-retry: "npm:^2.0.1"
     ssri: "npm:^12.0.0"
   checksum: 10c0/c40efb5e5296e7feb8e37155bde8eb70bc57d731b1f7d90e35a092fde403d7697c56fb49334d92d330d6f1ca29a98142036d6480a12681133a0a1453164cb2f0
+  languageName: node
+  linkType: hard
+
+"md5@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "md5@npm:2.3.0"
+  dependencies:
+    charenc: "npm:0.0.2"
+    crypt: "npm:0.0.2"
+    is-buffer: "npm:~1.1.6"
+  checksum: 10c0/14a21d597d92e5b738255fbe7fe379905b8cb97e0a49d44a20b58526a646ec5518c337b817ce0094ca94d3e81a3313879c4c7b510d250c282d53afbbdede9110
   languageName: node
   linkType: hard
 
@@ -1971,6 +2019,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     tailwind-merge: "npm:^2.0.0"
     tailwindcss: "npm:^3.0.0"
+    trie-search: "npm:^2.1.0"
     typescript: "npm:^5.0.0"
     vite: "npm:^5.0.0"
   languageName: unknown
@@ -2443,6 +2492,16 @@ __metadata:
   dependencies:
     is-number: "npm:^7.0.0"
   checksum: 10c0/487988b0a19c654ff3e1961b87f471702e708fa8a8dd02a298ef16da7206692e8552a0250e8b3e8759270f62e9d8314616f6da274734d3b558b1fc7b7724e892
+  languageName: node
+  linkType: hard
+
+"trie-search@npm:^2.1.0":
+  version: 2.2.0
+  resolution: "trie-search@npm:2.2.0"
+  dependencies:
+    hasharray: "npm:^1.1.1"
+    md5: "npm:^2.3.0"
+  checksum: 10c0/da5bba1107139cd0cb57226c8a36a841c7d3360410dfc500844d5b719b6c4560ead50d1acd49363a515e749fd91a9534101878ce197868ed4f5dbb22573ac8d7
   languageName: node
   linkType: hard
 
