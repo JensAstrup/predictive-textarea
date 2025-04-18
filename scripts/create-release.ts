@@ -5,7 +5,7 @@ import ora from 'ora'
 
 import { getNewVersion } from './utils/get-new-version'
 
-
+ 
 config({ path: '.env.local' })
 
 
