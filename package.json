@@ -18,8 +18,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "prepare-version": "ts-node --project tsconfig.cli.json scripts/release-branch.ts prepare-version",
-    "create-release": "ts-node --project tsconfig.cli.json scripts/release-branch.ts create-release"
+    "prepare-version": "ts-node --esm --project tsconfig.cli.json scripts/release-branch.ts prepare-version",
+    "create-release": "ts-node --esm --project tsconfig.cli.json scripts/release-branch.ts create-release"
   },
   "files": [
     "dist"
