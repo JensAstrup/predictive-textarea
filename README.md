@@ -1,6 +1,6 @@
 # Predictive Textarea
 
-A rich textarea component with AI-powered content prediction for React applications. It enables predictive text suggestions as users type, similar to GitHub Copilot's ghost text feature.
+A textarea component with AI-powered content prediction for React applications. It enables predictive text suggestions as users type, similar to GitHub Copilot's ghost text feature.
 
 ## Features
 
@@ -28,20 +28,6 @@ The component has minimal dependencies:
 - **React**: As this is a React component
 - **Tailwind CSS**: For styling (or you can provide custom classes)
 - **uuid**: Used internally for prediction ID generation
-
-### Peer Dependencies
-
-While not required, these are listed as peer dependencies for better integration:
-
-```json
-{
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "tailwindcss": "^3.0.0"
-  }
-}
-```
 
 ## Demo
 
@@ -71,8 +57,6 @@ import { PredictiveTextarea } from 'predictive-textarea';
 // Your content prediction function
 // This should connect to your AI service that generates predictions
 async function getContentPrediction(text: string): Promise<string> {
-  // Example using OpenAI API
-  // Replace with your actual implementation
   const response = await fetch('your-prediction-api-endpoint', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -110,28 +94,11 @@ export default MyForm;
 | `disabled` | `boolean` | No | Disables the textarea |
 | `placeholder` | `string` | No | Placeholder text |
 | `value` | `string` | No | Initial value |
-| `className` | `string` | No | Additional CSS classes |
+| `rows` | `number` | No | Number of rows to display (default: 1) |
+| `className` | `string` | No | Additional CSS classes for the textarea container |
+| `predictionClassName` | `string` | No | Additional CSS classes for the prediction text |
 | `...props` | `React.HTMLAttributes<HTMLDivElement>` | No | Any other props are passed to the underlying div |
 
-## Advanced Usage
-
-The package also exports utility components and hooks for advanced customization:
-
-```tsx
-import {
-  PredictiveTextarea,
-  ContentPrediction,
-  useCaretPosition,
-  useContentPrediction,
-  // Types
-  type PredictiveTextareaProps,
-  type GetCompletionContentPredictionFn,
-  // Utils
-  cn,
-  getTextUptilCaretInElement,
-  isCaretAtLineEnd
-} from 'predictive-textarea';
-```
 
 ## Styling
 
@@ -153,12 +120,6 @@ This component is designed to be framework-agnostic and can be integrated with a
 - It uses standard Tailwind CSS class naming conventions
 - It follows common styling patterns for focus states, borders, and other UI elements
 - The demo showcases integration with various UI component structures and themes
-
-If you're using a UI library in your project, this component can be styled to match your theme's colors and styles automatically.
-
-## License
-
-MIT
 
 ## Attribution
 
