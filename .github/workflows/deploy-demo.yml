@@ -3,7 +3,7 @@ name: Deploy Demo to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - fix_demo_pages
     paths:
       - 'demo/**'
       - '.github/workflows/deploy-demo.yml'
