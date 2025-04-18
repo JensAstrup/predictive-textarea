@@ -17,7 +17,9 @@
     "demo": "yarn demo:install && yarn demo:dev",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "prepare-version": "ts-node --project tsconfig.cli.json scripts/release-branch.ts prepare-version",
+    "create-release": "ts-node --project tsconfig.cli.json scripts/release-branch.ts create-release"
   },
   "files": [
     "dist"
@@ -72,6 +74,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "ts-jest": "^29.3.2",
+    "ts-node": "10.9.2",
     "tsup": "^7.0.0",
     "typescript": "^5.0.0"
   },

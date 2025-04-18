@@ -1,0 +1,64 @@
+name: Run Tests
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  test:
+    if: github.event.pull_request.base.ref != 'main' && !startsWith(github.event.pull_request.head.ref, 'v')
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        shard: [1, 2, 3, 4]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Filter paths
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            relevant:
+              - 'src/**'
+              - 'yarn.lock'
+
+      - name: Skip tests
+        if: steps.filter.outputs.relevant == 'false'
+        run: echo "No changes in src/ or yarn.lock. Skipping tests."
+
+      - name: Set up Node.js
+        if: steps.filter.outputs.relevant == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        if: steps.filter.outputs.relevant == 'true'
+        uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn install --immutable
+      
+      - name: Cache Jest cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.cache/jest
+          key: ${{ runner.os }}-jest-${{ github.sha }}-${{ matrix.shard }}
+          restore-keys: |
+            ${{ runner.os }}-jest-
+
+      - name: Run tests
+        if: steps.filter.outputs.relevant == 'true'
+        run: yarn test:coverage --shard=${{ matrix.shard }}/4 --maxWorkers=2 --workerIdleMemoryLimit=2048MB
+
+      - name: Upload coverage reports to Codecov
+        if: steps.filter.outputs.relevant == 'true'
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: AstroYenz/aceofspades
