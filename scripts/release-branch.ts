@@ -1,13 +1,13 @@
 import { Command } from 'commander'
 import { config } from 'dotenv'
 
-import { createRelease } from './create-release'
-import { prepareVersion } from './prepare-version'
+import { createRelease } from './create-release.js'
+import { prepareVersion } from './prepare-version.js'
 
 
 config({ path: '.env.local' })
 
-if (require.main === module) {
+if (process.argv[1] === import.meta.url) {
   const program = new Command()
 
   program

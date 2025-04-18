@@ -4,7 +4,7 @@ import { execa } from 'execa'
 import { Octokit } from 'octokit'
 import ora from 'ora'
 
-import { getNewVersion } from './utils/get-new-version'
+import { getNewVersion } from './utils/get-new-version.js'
 
 
 config({ path: '.env.local' })
@@ -121,7 +121,7 @@ async function prepareVersion(): Promise<void> {
 }
 
 // Execute if called directly
-if (require.main === module) {
+if (process.argv[1] === import.meta.url) {
   prepareVersion()
 }
 
