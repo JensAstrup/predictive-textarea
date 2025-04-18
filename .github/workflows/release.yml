@@ -1,0 +1,41 @@
+name: Release Version
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+permissions:
+  contents: write
+
+jobs:
+  publish_release:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'  # Ensure we're on the main branch after merge
+          fetch-depth: 0
+
+      - name: Extract tag name
+        id: extract_tag
+        run: |
+          TAG_NAME=$(echo "${{ github.event.pull_request.title }}" | grep -oP '^\d+\.\d+\.\d+(-[a-zA-Z0-9.]+)?$' || echo "")
+          if [ -z "$TAG_NAME" ]; then
+            echo "::error::Invalid tag format in PR title: '${{ github.event.pull_request.title }}'. Expected format: X.Y.Z or X.Y.Z-suffix"
+            exit 1
+          fi
+          echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.extract_tag.outputs.tag_name }}
+          name: ${{ steps.extract_tag.outputs.tag_name }}
+          body: ${{ github.event.pull_request.body }}
+          commit: main
+          token: ${{ secrets.GITHUB_TOKEN }}
