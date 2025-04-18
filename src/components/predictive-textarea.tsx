@@ -36,6 +36,7 @@ function PredictiveTextarea({
   getContentPredictionFn,
   debounceTime,
   disabled,
+  disableAutocomplete = false,
   placeholder = '',
   value: initialValue = '',
   rows = 1,
@@ -88,15 +89,17 @@ function PredictiveTextarea({
   }
 
   function handleKeyDown(event: KeyboardEvent<HTMLDivElement>): void {
-    if ((event.key === 'Tab' || event.key === 'ArrowRight') && prediction) {
-      event.preventDefault()
-      acceptContentPrediction()
-      return
-    }
-
     if (event.key === 'Escape' && prediction) {
       event.preventDefault()
       clearPrediction()
+      return
+    }
+
+    if (disableAutocomplete) return
+
+    if ((event.key === 'Tab' || event.key === 'ArrowRight') && prediction) {
+      event.preventDefault()
+      acceptContentPrediction()
       return
     }
   }

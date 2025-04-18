@@ -231,4 +231,90 @@ describe('PredictiveTextarea', () => {
     const textareaElement = screen.getByRole('textbox')
     expect(textareaElement).toHaveAttribute('contentEditable', 'false')
   })
+
+  it('should not accept prediction when Tab key is pressed and disableAutocomplete is true', () => {
+    const mockUseContentPrediction = useContentPrediction as jest.Mock
+    mockUseContentPrediction.mockReturnValue({
+      prediction: { id: 'pred-123', text: ' predicted text' },
+      setInputText: mockSetInputText,
+      clearPrediction: mockClearPrediction
+    })
+
+    render(
+      <PredictiveTextarea
+        getContentPredictionFn={mockGetContentPredictionFn}
+        disableAutocomplete={true}
+      />
+    )
+
+    const textareaElement = screen.getByRole('textbox')
+
+    act(() => {
+      fireEvent.focus(textareaElement)
+    })
+
+    act(() => {
+      fireEvent.keyDown(textareaElement, { key: 'Tab' })
+    })
+
+    expect(mockInsertTextAtCaret).not.toHaveBeenCalled()
+    expect(mockClearPrediction).not.toHaveBeenCalled()
+  })
+
+  it('should not accept prediction when ArrowRight key is pressed and disableAutocomplete is true', () => {
+    const mockUseContentPrediction = useContentPrediction as jest.Mock
+    mockUseContentPrediction.mockReturnValue({
+      prediction: { id: 'pred-123', text: ' predicted text' },
+      setInputText: mockSetInputText,
+      clearPrediction: mockClearPrediction
+    })
+
+    render(
+      <PredictiveTextarea
+        getContentPredictionFn={mockGetContentPredictionFn}
+        disableAutocomplete={true}
+      />
+    )
+
+    const textareaElement = screen.getByRole('textbox')
+
+    act(() => {
+      fireEvent.focus(textareaElement)
+    })
+
+    act(() => {
+      fireEvent.keyDown(textareaElement, { key: 'ArrowRight' })
+    })
+
+    expect(mockInsertTextAtCaret).not.toHaveBeenCalled()
+    expect(mockClearPrediction).not.toHaveBeenCalled()
+  })
+
+  it('should still clear prediction when Escape key is pressed even when disableAutocomplete is true', () => {
+    const mockUseContentPrediction = useContentPrediction as jest.Mock
+    mockUseContentPrediction.mockReturnValue({
+      prediction: { id: 'pred-123', text: ' predicted text' },
+      setInputText: mockSetInputText,
+      clearPrediction: mockClearPrediction
+    })
+
+    render(
+      <PredictiveTextarea
+        getContentPredictionFn={mockGetContentPredictionFn}
+        disableAutocomplete={true}
+      />
+    )
+
+    const textareaElement = screen.getByRole('textbox')
+
+    act(() => {
+      fireEvent.focus(textareaElement)
+    })
+
+    act(() => {
+      fireEvent.keyDown(textareaElement, { key: 'Escape' })
+    })
+
+    expect(mockClearPrediction).toHaveBeenCalled()
+  })
 })
