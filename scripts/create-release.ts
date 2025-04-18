@@ -5,9 +5,8 @@ import ora from 'ora'
 
 import { getNewVersion } from './utils/get-new-version'
 
- 
-config({ path: '.env.local' })
 
+config({ path: '.env.local' })
 
 /**
  * Creates a GitHub PR from develop to main with release notes
@@ -56,7 +55,7 @@ async function createRelease(): Promise<void> {
 }
 
 // Execute if called directly
-if (require.main === module) {
+if (process.argv[1] === import.meta.url) {
   createRelease()
 }
 

@@ -121,7 +121,7 @@ async function prepareVersion(): Promise<void> {
 }
 
 // Execute if called directly
-if (require.main === module) {
+if (process.argv[1] === import.meta.url) {
   prepareVersion()
 }
 

@@ -61,7 +61,7 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
   async function getContentPrediction(text: string): Promise<CompletionPrediction | null> {
     const cachedResults = predictionCache.search(text)
     if (cachedResults.length > 0) {
-      return cachedResults[0]
+      return cachedResults[0] || null
     }
 
     if (abortController.current) {
