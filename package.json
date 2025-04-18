@@ -6,6 +6,13 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JensAstrup/predictive-textarea.git"

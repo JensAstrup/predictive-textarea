@@ -37,21 +37,14 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Install root dependencies
-        run: yarn install
+      - name: Install dependencies
+        run: |
+          yarn install
+          cd demo
+          yarn install
 
       - name: Build main package
         run: yarn build
-
-      - name: Create package tarball
-        run: npm pack
-
-      - name: Install demo dependencies with local package
-        run: |
-          cd demo
-          # Install using the tarball created in the previous step
-          yarn add ../predictive-textarea-*.tgz
-          yarn install
 
       - name: Build demo
         run: |
