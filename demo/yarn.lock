@@ -2014,7 +2014,7 @@ __metadata:
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.0.0"
     postcss: "npm:^8.4.0"
-    predictive-textarea: "file:.."
+    predictive-textarea: "npm:0.1.1-alpha.1"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -2026,9 +2026,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"predictive-textarea@file:..::locator=predictive-textarea-demo%40workspace%3A.":
-  version: 0.1.1
-  resolution: "predictive-textarea@file:..#..::hash=1b9b25&locator=predictive-textarea-demo%40workspace%3A."
+"predictive-textarea@npm:0.1.1-alpha.1":
+  version: 0.1.1-alpha.1
+  resolution: "predictive-textarea@npm:0.1.1-alpha.1"
   dependencies:
     quick-lru: "npm:^7.0.1"
     trie-search: "npm:^2.2.0"
@@ -2041,7 +2041,7 @@ __metadata:
     react-dom: ^18.0.0
     tailwind-merge: ^2.0.0
     tailwindcss: ^3.0.0
-  checksum: 10c0/30bec1be07309ba4615653c7ea1dbb99f77045c895c59a67f22888c3f07c0eb5476216ecf6f96cd4d56807519d261e05c8986564e8a95b1e7b111ce1a4cf939a
+  checksum: 10c0/71ea4c9ccdb3c81a02715a780d9942af09614d0568ea75513d6fc95be3ed8e690c628a788b9f411d92380b28c20006ba75f3dd9bc53792897307e612a67a6274
   languageName: node
   linkType: hard
 
