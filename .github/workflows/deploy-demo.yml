@@ -38,7 +38,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Install root dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Build main package
         run: yarn build
@@ -46,7 +46,7 @@ jobs:
       - name: Install demo dependencies
         run: |
           cd demo
-          yarn install --frozen-lockfile
+          yarn install --immutable
 
       - name: Build demo
         run: |
