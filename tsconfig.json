@@ -16,7 +16,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "react",
-    "incremental": true,
     "types": [
       "node",
       "jest",
@@ -33,7 +32,7 @@
         "./src/*"
       ],
     },
-    "target": "ES2023",
+    "target": "ES2022",
     "noUncheckedIndexedAccess": true
   },
   "include": [
