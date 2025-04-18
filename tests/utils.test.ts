@@ -1,5 +1,6 @@
-import { getTextUptilCaretInElement } from '../src/utils/get-text-up-until-caret-in-element'
-import { isCaretAtLineEnd } from "@/utils/is-caret-at-line-end"
+import { isCaretAtLineEnd } from '@/utils/is-caret-at-line-end'
+
+import { getTextUpUntilCaretInElement } from '../src/utils/get-text-up-until-caret-in-element'
 
 
 describe('Autocomplete Utils', () => {
@@ -33,16 +34,16 @@ describe('Autocomplete Utils', () => {
 
     it('should return empty string if no selection', () => {
       jest.spyOn(window, 'getSelection').mockReturnValue(null)
-      expect(getTextUptilCaretInElement(mockElement)).toBe('')
+      expect(getTextUpUntilCaretInElement(mockElement)).toBe('')
     })
 
     it('should return empty string if selection is not collapsed', () => {
       mockSelection.isCollapsed = false
-      expect(getTextUptilCaretInElement(mockElement)).toBe('')
+      expect(getTextUpUntilCaretInElement(mockElement)).toBe('')
     })
 
     it('should return text before caret', () => {
-      expect(getTextUptilCaretInElement(mockElement)).toBe('text before caret')
+      expect(getTextUpUntilCaretInElement(mockElement)).toBe('text before caret')
       expect(mockRange.selectNodeContents).toHaveBeenCalledWith(mockElement)
     })
   })

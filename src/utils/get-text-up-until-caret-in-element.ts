@@ -4,7 +4,7 @@
  * @param element - The contenteditable element to get text from
  * @returns The text content up until the caret position
  */
-export function getTextUptilCaretInElement(element: HTMLElement): string {
+export function getTextUpUntilCaretInElement(element: HTMLElement): string {
   const selection = window.getSelection()
   if (!selection || !selection.isCollapsed) return ''
 

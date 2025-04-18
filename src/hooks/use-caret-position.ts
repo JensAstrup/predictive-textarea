@@ -2,7 +2,7 @@ import { RefObject, useCallback } from 'react'
 
 import { isCaretAtLineEnd } from '@/utils/is-caret-at-line-end'
 
-import { getTextUptilCaretInElement } from '../utils/get-text-up-until-caret-in-element'
+import { getTextUpUntilCaretInElement } from '../utils/get-text-up-until-caret-in-element'
 
 
 export interface UseCaretPositionOptions {
@@ -21,7 +21,7 @@ function useCaretPosition(options: UseCaretPositionOptions): UseCaretPositionRes
 
   const getTextAtCaret = useCallback((): string => {
     if (!textareaRef.current) return ''
-    return getTextUptilCaretInElement(textareaRef.current)
+    return getTextUpUntilCaretInElement(textareaRef.current)
   }, [textareaRef])
 
   const getCurrentSelection = useCallback((): Selection | null => {

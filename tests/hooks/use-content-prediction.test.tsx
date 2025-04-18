@@ -1,4 +1,5 @@
 import { act, renderHook } from '@testing-library/react'
+
 import { useContentPrediction } from '../../src/hooks/use-content-prediction'
 
 // Create a mock for the trie-search library
@@ -42,4 +43,4 @@ describe('useContentPrediction', () => {
 
     expect(result.current.prediction).toBeNull()
   })
-}) 
+})

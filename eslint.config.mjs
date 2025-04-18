@@ -31,6 +31,7 @@ export default [
       'import': fixupPluginRules(_import),
       'jest': fixupPluginRules(jest),
       'yenz': fixupPluginRules(yenz),
+      '@stylistic': stylistic
     },
 
     languageOptions: {
@@ -136,7 +137,7 @@ export default [
       'yenz/no-loops': 'error',
       'yenz/type-ordering': 'error'
     }
-  }, ...fixupConfigRules(compat.extends('plugin:jest/recommended', 'plugin:jest/style')).map(config => ({
+  }, ...fixupConfigRules(compat.extends('plugin:jest/style')).map(config => ({
     ...config,
     files: ['tests/**']
   })), {

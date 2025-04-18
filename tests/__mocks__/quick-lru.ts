@@ -53,4 +53,4 @@ class MockQuickLRU<K, V> extends Map<K, V> {
   }
 }
 
-export default MockQuickLRU 
+export default MockQuickLRU
