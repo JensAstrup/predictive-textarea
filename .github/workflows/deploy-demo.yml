@@ -38,7 +38,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Install root dependencies
-        run: yarn install --immutable
+        run: yarn install
 
       - name: Build main package
         run: yarn build
@@ -46,7 +46,8 @@ jobs:
       - name: Install demo dependencies
         run: |
           cd demo
-          yarn install --immutable
+          # Use regular install without immutable flag to allow local package resolution
+          yarn install
 
       - name: Build demo
         run: |
