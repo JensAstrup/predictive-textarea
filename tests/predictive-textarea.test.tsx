@@ -1,19 +1,19 @@
 import { render, screen, fireEvent, act } from '@testing-library/react'
 
-import { PredictiveTextarea } from '../src/components/predictive-textarea'
-import { useCaretPosition } from '../src/hooks/use-caret-position'
-import { useContentPrediction } from '../src/hooks/use-content-prediction'
+import { PredictiveTextarea } from '@/components/predictive-textarea'
+import { useCaretPosition } from '@/hooks/use-caret-position'
+import { useContentPrediction } from '@/hooks/use-content-prediction'
 
 
-jest.mock('../src/hooks/use-content-prediction', () => ({
+jest.mock('@/hooks/use-content-prediction', () => ({
   useContentPrediction: jest.fn()
 }))
 
-jest.mock('../src/hooks/use-caret-position', () => ({
+jest.mock('@/hooks/use-caret-position', () => ({
   useCaretPosition: jest.fn()
 }))
 
-jest.mock('../src/components/content-prediction', () => ({
+jest.mock('@/components/content-prediction', () => ({
   ContentPrediction: ({ text, predictionId }: { text: string, predictionId: string }) => (
     <span data-testid="content-prediction" data-predictionid={predictionId}>{text}</span>
   )

@@ -16,7 +16,7 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/tests/jest.setup.ts'],
   moduleNameMapper: {
     '\\.css$': '<rootDir>/tests/__mocks__/styles-mock.ts',
-    '^@/(.*)$': '<rootDir>/$1',
+    '^@/(.*)$': '<rootDir>/src/$1',
     '^quick-lru$': '<rootDir>/tests/__mocks__/quick-lru.ts'
   },
   roots: ['<rootDir>/src', '<rootDir>/tests'],

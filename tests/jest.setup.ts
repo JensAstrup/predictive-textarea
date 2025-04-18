@@ -24,20 +24,36 @@ Object.defineProperty(window, 'matchMedia', {
 
 // Mock IntersectionObserver which is not available in jsdom
 global.IntersectionObserver = class IntersectionObserver {
+  root = null
+  rootMargin = '0px'
+  thresholds = [0]
+
   constructor() {}
   observe() {}
   unobserve() {}
   disconnect() {}
-}
+  takeRecords() {
+    return []
+  }
+} as unknown as typeof IntersectionObserver
 
 // Mock window.crypto for UUID generation
 Object.defineProperty(window, 'crypto', {
   value: {
     getRandomValues: (arr: Uint8Array) => {
-      for (let i = 0; i < arr.length; i++) {
+      // Use Array.prototype methods instead of loops
+      Array.from(arr).forEach((_, i) => {
         arr[i] = Math.floor(Math.random() * 256)
-      }
+      })
       return arr
     },
   },
-}) 
+})
+
+// Add TextEncoder and TextDecoder to the global scope for tests
+// These are available in browsers but not in the JSDOM test environment
+import { TextEncoder, TextDecoder } from 'util'
+
+
+global.TextEncoder = TextEncoder as typeof global.TextEncoder
+global.TextDecoder = TextDecoder as typeof global.TextDecoder
