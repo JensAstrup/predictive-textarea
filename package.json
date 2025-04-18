@@ -6,6 +6,20 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JensAstrup/predictive-textarea.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JensAstrup/predictive-textarea/issues"
+  },
+  "homepage": "https://github.com/JensAstrup/predictive-textarea#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
