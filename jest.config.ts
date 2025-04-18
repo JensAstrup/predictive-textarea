@@ -1,5 +1,7 @@
-/** @type {import('jest').Config} */
-const config = {
+import type { Config } from 'jest'
+
+
+const config: Config = {
   maxWorkers: '75%', // Use 75% of available CPU cores
   workerIdleMemoryLimit: '1024MB', // Prevent memory leaks in workers
   cache: true, // Enable caching
@@ -43,4 +45,4 @@ const config = {
   ]
 }
 
-module.exports = config 
+export default config

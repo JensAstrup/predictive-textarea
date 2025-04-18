@@ -1,13 +1,18 @@
+import { fileURLToPath } from 'url'
+
 import { Command } from 'commander'
 import { config } from 'dotenv'
 
-import { createRelease } from './create-release.js'
-import { prepareVersion } from './prepare-version.js'
+import { createRelease } from './create-release'
+import { prepareVersion } from './prepare-version'
 
 
 config({ path: '.env.local' })
 
-if (process.argv[1] === import.meta.url) {
+// ESM equivalent of __filename and __dirname
+const isMainModule = process.argv[1] === fileURLToPath(import.meta.url)
+
+if (isMainModule) {
   const program = new Command()
 
   program
