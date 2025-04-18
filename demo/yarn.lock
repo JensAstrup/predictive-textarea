@@ -2028,7 +2028,7 @@ __metadata:
 
 "predictive-textarea@file:..::locator=predictive-textarea-demo%40workspace%3A.":
   version: 0.1.1
-  resolution: "predictive-textarea@file:..#..::hash=da0251&locator=predictive-textarea-demo%40workspace%3A."
+  resolution: "predictive-textarea@file:..#..::hash=1b9b25&locator=predictive-textarea-demo%40workspace%3A."
   dependencies:
     quick-lru: "npm:^7.0.1"
     trie-search: "npm:^2.2.0"
@@ -2041,7 +2041,7 @@ __metadata:
     react-dom: ^18.0.0
     tailwind-merge: ^2.0.0
     tailwindcss: ^3.0.0
-  checksum: 10c0/bc40e506f9c6e7ca8ef98202c401059b5502a22fae81935e49a446b644346d00a567ebf3367eeccf603b826928ee1488290bcaf43180cab90d512dead88b31cb
+  checksum: 10c0/30bec1be07309ba4615653c7ea1dbb99f77045c895c59a67f22888c3f07c0eb5476216ecf6f96cd4d56807519d261e05c8986564e8a95b1e7b111ce1a4cf939a
   languageName: node
   linkType: hard
 

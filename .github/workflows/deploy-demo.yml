@@ -43,10 +43,14 @@ jobs:
       - name: Build main package
         run: yarn build
 
-      - name: Install demo dependencies
+      - name: Create package tarball
+        run: npm pack
+
+      - name: Install demo dependencies with local package
         run: |
           cd demo
-          # Use regular install without immutable flag to allow local package resolution
+          # Install using the tarball created in the previous step
+          yarn add ../predictive-textarea-*.tgz
           yarn install
 
       - name: Build demo
