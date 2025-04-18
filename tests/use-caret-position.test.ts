@@ -1,13 +1,12 @@
 import { renderHook } from '@testing-library/react'
 
-
 import { useCaretPosition } from '@/hooks/use-caret-position'
 import { getTextUpUntilCaretInElement } from '@/utils/get-text-up-until-caret-in-element'
 import { isCaretAtLineEnd } from '@/utils/is-caret-at-line-end'
 
 
 jest.mock('@/utils/get-text-up-until-caret-in-element', () => ({
-  getTextUptilCaretInElement: jest.fn()
+  getTextUpUntilCaretInElement: jest.fn()
 }))
 
 jest.mock('@/utils/is-caret-at-line-end', () => ({
@@ -15,7 +14,7 @@ jest.mock('@/utils/is-caret-at-line-end', () => ({
 }))
 
 describe('useCaretPosition', () => {
-  const mockGetTextUptilCaretInElement = getTextUpUntilCaretInElement as jest.Mock
+  const mockGetTextUpUntilCaretInElement = getTextUpUntilCaretInElement as jest.Mock
   const mockIsCaretAtLineEnd = isCaretAtLineEnd as jest.Mock
   const mockTextareaRef = { current: document.createElement('div') }
 
@@ -28,13 +27,13 @@ describe('useCaretPosition', () => {
     expect(result.current.getTextAtCaret()).toBe('')
   })
 
-  it('should call getTextUptilCaretInElement for getTextAtCaret', () => {
-    mockGetTextUptilCaretInElement.mockReturnValue('text at caret')
+  it('should call getTextUpUntilCaretInElement for getTextAtCaret', () => {
+    mockGetTextUpUntilCaretInElement.mockReturnValue('text at caret')
 
     const { result } = renderHook(() => useCaretPosition({ textareaRef: mockTextareaRef }))
     const text = result.current.getTextAtCaret()
 
-    expect(mockGetTextUptilCaretInElement).toHaveBeenCalledWith(mockTextareaRef.current)
+    expect(mockGetTextUpUntilCaretInElement).toHaveBeenCalledWith(mockTextareaRef.current)
     expect(text).toBe('text at caret')
   })
 
