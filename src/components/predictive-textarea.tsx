@@ -92,7 +92,7 @@ function PredictiveTextarea({
 
     if (disableAutocomplete) return
 
-    if ((event.key === 'Tab' || event.key === 'ArrowRight') && prediction) {
+    if (event.key === 'Tab' && prediction) {
       event.preventDefault()
       acceptContentPrediction()
       return
@@ -111,26 +111,22 @@ function PredictiveTextarea({
     clearPrediction()
     if (textareaRef.current && !internalValue) {
       textareaRef.current.textContent = placeholder || ''
-      textareaRef.current.style.color = 'var(--muted-foreground, #6b7280)'
     }
   }
 
   const mainClassName = `min-h-[${DEFAULT_LINE_HEIGHT_PX * rows}px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:border-primary relative`
   const disabledClassName = disabled && 'opacity-50'
-  const placeholderClassName = placeholder && 'placeholder:text-muted-foreground'
+  const placeholderClassName = placeholder && 'placeholder:text-muted-foreground var(--muted-foreground, #6b7280)'
 
-  const textareaClassName = cn(mainClassName, disabledClassName, className)
+  const textareaClassName = cn(mainClassName, disabledClassName, placeholderClassName, className)
   const predictionId = prediction?.id || ''
 
-  // Set placeholder text when empty and not focused
   useEffect(() => {
     if (textareaRef.current) {
       if (!hasFocus && !internalValue.trim()) {
         textareaRef.current.innerText = placeholder || ''
-        textareaRef.current.style.color = 'var(--muted-foreground, #6b7280)'
       } else if (!internalValue) {
         textareaRef.current.innerText = ''
-        textareaRef.current.style.color = ''
       }
     }
   }, [placeholder, internalValue])

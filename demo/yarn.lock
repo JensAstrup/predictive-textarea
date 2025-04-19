@@ -2088,13 +2088,13 @@ __metadata:
 
 "predictive-textarea@file:..::locator=predictive-textarea-demo%40workspace%3A.":
   version: 0.1.1-alpha.1
-  resolution: "predictive-textarea@file:..#..::hash=dfc5db&locator=predictive-textarea-demo%40workspace%3A."
+  resolution: "predictive-textarea@file:..#..::hash=e93abc&locator=predictive-textarea-demo%40workspace%3A."
   dependencies:
     trie-search: "npm:^2.2.0"
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/7b8f4a3e96eb3612bb7fc834c5da95cfc284a1bbec6f8c4c23c688b8df35b3dc4f2adef4dccfe3efdd65f564ce0031e9caebde622e18143a3904b53ed2634c4f
+  checksum: 10c0/38fbefde23fb7264df04967d2d469592bffddab352475443542d257ed79261c8fcfed1f725268102687f849c9a94fe779c17eb2d27222a41166ddd212447144e
   languageName: node
   linkType: hard
 
