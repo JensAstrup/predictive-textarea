@@ -10,6 +10,6 @@ const isDevelopment = import.meta.env.DEV
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {isDevelopment ? <DevPlayground /> : <Demo />}
+    {!isDevelopment ? <DevPlayground /> : <Demo />}
   </React.StrictMode>,
 ) 

@@ -4,6 +4,7 @@ import './textarea-styles.css'
 import { ComponentShowcase } from './components/ui/component-showcase'
 import { ThemeProvider } from './components/theme-provider'
 import { ThemeToggle } from './components/theme-toggle'
+import { predictInputContent } from './utils/predict-input'
 
 function Demo(): React.ReactElement {
   const mockPrediction = async (text: string) => {
@@ -14,7 +15,60 @@ function Demo(): React.ReactElement {
   }
 
   // Code examples for each showcase
-  const defaultCode = `import { PredictiveTextarea } from 'predictive-textarea'
+  const defaultCode = `
+  
+import { PredictiveTextarea } from 'predictive-textarea'
+
+let client: OpenAI | null = null
+
+function getClient(): OpenAI {
+  if (!client) {
+    client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    })
+  }
+  return client
+}
+
+type PredictInputContentResponse = {
+  type: 'prediction' | 'error'
+  content: string
+  error?: string
+  newWord: boolean
+}
+
+async function predictInputContent(text: string): Promise<string> {
+  const client = getClient()
+  const response = await client.responses.create({
+    model: 'gpt-4o-mini',
+    instructions: INSTRUCTIONS,
+    input: \`Respond in json format. Content: "\${text}"\`,
+    text: {
+      format: {
+        type: 'json_object'
+      }
+    }
+  })
+
+  let output: PredictInputContentResponse
+
+  try {
+    output = JSON.parse(response.output_text || '{}') as PredictInputContentResponse
+  }
+  catch (error) {
+    return ''
+  }
+
+  if (output.type === 'prediction') {
+    if (output.newWord) {
+      return ' ' + output.content
+    }
+    return output.content
+  }
+  else {
+    return ''
+  }
+}
 
 function Example() {
   const getContentPrediction = async (text: string) => {
@@ -24,7 +78,7 @@ function Example() {
 
   return (
     <PredictiveTextarea
-      getContentPredictionFn={getContentPrediction}
+      getContentPredictionFn={predictInputContent}
       debounceTime={300}
       placeholder="Start typing to see predictions..."
     />
@@ -180,10 +234,10 @@ function Example() {
               </p>
               <ComponentShowcase
                 title="Default"
-                description="Uses the default prediction styling (text-muted-foreground)"
+                description="Uses the default prediction styling (text-muted-foreground) with OpenAI integration"
                 preview={
                   <PredictiveTextarea
-                    getContentPredictionFn={mockPrediction}
+                    getContentPredictionFn={predictInputContent}
                     debounceTime={300}
                     placeholder="Start typing to see predictions..."
                     className="custom-textarea"

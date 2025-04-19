@@ -1,11 +1,9 @@
 {
   "name": "predictive-textarea-demo",
   "private": true,
-  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:with-lib": "concurrently \"cd .. && npm run watch\" \"npm run dev\"",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
@@ -14,6 +12,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.344.0",
+    "openai": "^4.95.1",
     "predictive-textarea": "file:..",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.1.0",
