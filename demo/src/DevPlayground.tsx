@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { PredictiveTextarea } from 'predictive-textarea'
 import './textarea-styles.css'
 import { ThemeProvider } from './components/theme-provider'
+import { ThemeToggle } from './components/theme-toggle'
 
 function DevPlayground(): React.ReactElement {
   const [predictionDelay, setPredictionDelay] = useState(500)
@@ -31,10 +32,11 @@ function DevPlayground(): React.ReactElement {
   }
 
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="predictive-textarea-theme">
+    <ThemeProvider defaultTheme="system" storageKey="predictive-textarea-theme">
       <div className="p-6 max-w-4xl mx-auto bg-background text-foreground">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Development Playground</h1>
+          <ThemeToggle />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -140,6 +142,7 @@ function DevPlayground(): React.ReactElement {
               value={initialValue}
               rows={rows}
               disabled={disabled}
+              predictionClassName={getPredictionClassName()}
             />
           </div>
         </div>

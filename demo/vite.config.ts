@@ -10,7 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
-      'predictive-textarea': '../dist/index.es.js'
+      'predictive-textarea': '../dist/index.js'
     }
   },
   optimizeDeps: {
