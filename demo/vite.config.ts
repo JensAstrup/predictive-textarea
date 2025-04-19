@@ -1,13 +1,24 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
 
 export default defineConfig({
   base: '/predictive-textarea/',
-  plugins: [react()],
+  plugins: [react({
+    jsxRuntime: 'automatic',
+    jsxImportSource: 'react'
+  })],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': '/src',
+      'predictive-textarea': '../dist/index.es.js'
+    }
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'predictive-textarea']
+  },
+  build: {
+    commonjsOptions: {
+      include: [/predictive-textarea/, /node_modules/]
     }
   }
 }) 

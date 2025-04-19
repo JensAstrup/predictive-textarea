@@ -1,0 +1,33 @@
+{
+  "name": "predictive-textarea",
+  "version": "0.1.1-alpha.1",
+  "description": "A rich text input with AI-powered autocomplete content predictions for React",
+  "type": "module",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js",
+      "default": "./dist/index.es.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "trie-search": "^2.2.0"
+  },
+  "yalcSig": "5c34aec0ff80d2b89e456d93bc99eb04"
+}
