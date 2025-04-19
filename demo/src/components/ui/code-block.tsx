@@ -1,5 +1,5 @@
 import React from 'react'
-import { cn } from '../../../../src/utils'
+import { cn } from '../../utils/cn'
 import { Highlight, themes } from 'prism-react-renderer'
 
 interface CodeBlockProps {
@@ -9,9 +9,9 @@ interface CodeBlockProps {
   showLineNumbers?: boolean
 }
 
-function CodeBlock({ 
-  code, 
-  language = 'tsx', 
+function CodeBlock({
+  code,
+  language = 'tsx',
   className,
   showLineNumbers = true
 }: CodeBlockProps): React.ReactElement {

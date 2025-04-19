@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'demo/**'
+      - 'src/**'
       - '.github/workflows/deploy-demo.yml'
 
 permissions:
@@ -38,10 +39,14 @@ jobs:
 
       - name: Install dependencies
         run: |
+          yarn install
           cd demo
-          yarn install --frozen-lockfile
+          yarn install
 
-      - name: Build
+      - name: Build main package
+        run: yarn build
+
+      - name: Build demo
         run: |
           cd demo
           yarn build

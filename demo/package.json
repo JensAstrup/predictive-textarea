@@ -12,6 +12,7 @@
     "@radix-ui/react-slot": "^1.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "predictive-textarea": "0.1.1-alpha.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
