@@ -27,14 +27,6 @@
         "name": "jest"
       }
     ],
-    "paths": {
-      "predictive-textarea": [
-        "../predictive-textarea/src"
-      ],
-      "predictive-textarea/*": [
-        "../predictive-textarea/src/*"
-      ]
-    },
     "target": "ES2022",
     "noUncheckedIndexedAccess": true
   },
@@ -46,6 +38,7 @@
   "exclude": [
     "node_modules",
     "dist",
-    "demo"
+    "demo",
+    "dev"
   ]
 }
