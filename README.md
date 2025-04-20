@@ -17,7 +17,6 @@ You can see a demo of the component [here](https://jensastrup.github.io/predicti
 
 ![Demo Preview](demo/public/demo.gif)
 
-
 ## Installation
 
 ```bash
@@ -36,7 +35,7 @@ The component has minimal dependencies:
 - **Tailwind CSS**: For styling (or you can provide custom classes)
 - **uuid**: Used internally for prediction ID generation
 
-## Demo
+## Local Demo
 
 To run the demo locally:
 

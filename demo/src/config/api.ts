@@ -3,7 +3,7 @@ const API_CONFIG = {
   // Local development
   local: '/api/predict',
   // Vercel deployment (if you deploy the API separately)
-  vercel: process.env.NEXT_PUBLIC_API_URL || '/api/predict',
+  vercel: 'https://predictive-textarea.vercel.app/api/predict',
 }
 
 // Extend Window interface to include our environment variables
@@ -20,8 +20,7 @@ function getApiUrl(): string {
   // Check if we're in a browser environment
   if (typeof window !== 'undefined') {
     // If the environment variable is set, use it
-    if (process.env.NEXT_PUBLIC_API_URL) {
-      return process.env.NEXT_PUBLIC_API_URL;
+      return API_CONFIG.vercel;
     }
     
     // Local development

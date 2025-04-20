@@ -42,7 +42,7 @@ jobs:
 
       - name: Install main package dependencies
         working-directory: predictive-textarea
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Build main package
         working-directory: predictive-textarea
@@ -50,7 +50,7 @@ jobs:
 
       - name: Install demo dependencies
         working-directory: demo
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Build demo
         working-directory: demo
