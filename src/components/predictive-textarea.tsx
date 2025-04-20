@@ -78,8 +78,6 @@ function PredictiveTextarea({
   function acceptContentPrediction(): void {
     if (!prediction?.text || !textareaRef.current) return
 
-    console.log('Accepting prediction:', prediction.text)
-
     setInternalValue(textareaRef.current.innerText || '')
     insertTextAtCaret(prediction.text)
     clearPrediction()
