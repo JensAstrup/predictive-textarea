@@ -21,6 +21,7 @@
 **/dist
 **/build
 **/out
+**/.next
 
 # Environment files
 .env*

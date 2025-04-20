@@ -4,7 +4,7 @@ import './textarea-styles.css'
 import { ComponentShowcase } from './components/ui/component-showcase'
 import { ThemeProvider } from './components/theme-provider'
 import { ThemeToggle } from './components/theme-toggle'
-import { predictInputContent } from './utils/predict-input'
+import { fetchPrediction } from './utils/api-client'
 
 function Demo(): React.ReactElement {
   const mockPrediction = async (text: string) => {
@@ -19,66 +19,32 @@ function Demo(): React.ReactElement {
   
 import { PredictiveTextarea } from 'predictive-textarea'
 
-let client: OpenAI | null = null
-
-function getClient(): OpenAI {
-  if (!client) {
-    client = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
-    })
-  }
-  return client
-}
-
-type PredictInputContentResponse = {
-  type: 'prediction' | 'error'
-  content: string
-  error?: string
-  newWord: boolean
-}
-
-async function predictInputContent(text: string): Promise<string> {
-  const client = getClient()
-  const response = await client.responses.create({
-    model: 'gpt-4o-mini',
-    instructions: INSTRUCTIONS,
-    input: \`Respond in json format. Content: "\${text}"\`,
-    text: {
-      format: {
-        type: 'json_object'
-      }
-    }
-  })
-
-  let output: PredictInputContentResponse
-
+async function fetchPrediction(text: string): Promise<string> {
   try {
-    output = JSON.parse(response.output_text || '{}') as PredictInputContentResponse
-  }
-  catch (error) {
-    return ''
-  }
+    const response = await fetch('http://localhost:3001/api/predict', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text }),
+    })
 
-  if (output.type === 'prediction') {
-    if (output.newWord) {
-      return ' ' + output.content
+    if (!response.ok) {
+      throw new Error('Failed to fetch prediction')
     }
-    return output.content
-  }
-  else {
+
+    const data = await response.json()
+    return data.prediction
+  } catch (error) {
+    console.error('Error fetching prediction:', error)
     return ''
   }
 }
 
 function Example() {
-  const getContentPrediction = async (text: string) => {
-    // Your implementation to get AI predictions
-    return \`Suggested completion for: \${text}\`
-  }
-
   return (
     <PredictiveTextarea
-      getContentPredictionFn={predictInputContent}
+      getContentPredictionFn={fetchPrediction}
       debounceTime={300}
       placeholder="Start typing to see predictions..."
     />
@@ -217,7 +183,7 @@ function Example() {
         </header>
 
         <main className="container mx-auto px-6 py-8 flex-1">
-          <div className="max-w-3xl mx-auto space-y-12">
+          <div className="max-w-3xl mx-auto space-y-12 min-h-[200px] h-full">
             {/* Installation Section */}
             <section className="space-y-4">
               <h2 className="text-xl font-semibold">Installation</h2>
@@ -237,8 +203,8 @@ function Example() {
                 description="Uses the default prediction styling (text-muted-foreground) with OpenAI integration"
                 preview={
                   <PredictiveTextarea
-                    getContentPredictionFn={predictInputContent}
-                    debounceTime={300}
+                    getContentPredictionFn={fetchPrediction}
+                    debounceTime={500}
                     placeholder="Start typing to see predictions..."
                     className="custom-textarea"
                   />

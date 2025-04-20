@@ -1,6 +1,13 @@
 /* Custom styles for PredictiveTextarea */
 .custom-textarea {
-  @apply min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  @apply min-h-[200px] h-full w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  display: block !important;
+}
+
+.custom-textarea>div[contenteditable] {
+  min-height: inherit;
+  height: 100%;
+  width: 100%;
 }
 
 .custom-textarea:focus,
