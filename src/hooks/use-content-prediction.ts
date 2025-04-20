@@ -81,8 +81,6 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
       // Cache the prediction using explicit mapping
       predictionCache.map(text, prediction)
 
-      console.log('Prediction:', prediction)
-
       return prediction
     }
     catch {
