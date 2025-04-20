@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import TrieSearch from 'trie-search'
 
-import { CompletionPrediction, GetCompletionContentPredictionFn } from '../types'
-import { stringHash } from '../utils/hash'
+import { CompletionPrediction, GetCompletionContentPredictionFn } from '@/types'
+import { stringHash } from '@/utils/hash'
 
 
 const DEFAULT_CACHE_SIZE = 100

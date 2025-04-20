@@ -1,6 +1,6 @@
 import { isCaretAtLineEnd } from '@/utils/is-caret-at-line-end'
 
-import { getTextUpUntilCaretInElement } from '../src/utils/get-text-up-until-caret-in-element'
+import { getTextUpUntilCaretInElement } from '@/utils/get-text-up-until-caret-in-element'
 
 
 describe('Autocomplete Utils', () => {

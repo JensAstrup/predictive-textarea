@@ -5,7 +5,7 @@ import { useContentPrediction } from '@/hooks/use-content-prediction'
 import { PredictiveTextareaProps } from '@/types'
 import { cn } from '@/utils/cn'
 
-import { ContentPrediction } from './content-prediction'
+import { ContentPrediction } from '@/components/content-prediction'
 
 const DEFAULT_LINE_HEIGHT_PX = 30
 
