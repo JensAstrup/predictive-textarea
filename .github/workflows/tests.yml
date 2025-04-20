@@ -48,7 +48,7 @@ jobs:
         if: steps.filter.outputs.relevant == 'true'
         uses: actions/cache@v4
         with:
-          path: node_modules/.cache/jest
+          path: predictive-textarea/node_modules/.cache/jest
           key: ${{ runner.os }}-jest-${{ github.sha }}-${{ matrix.shard }}
           restore-keys: |
             ${{ runner.os }}-jest-
