@@ -15,13 +15,13 @@ const config: Config = {
 
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/tests/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/predictive-textarea/tests/jest.setup.ts'],
   moduleNameMapper: {
-    '\\.css$': '<rootDir>/tests/__mocks__/styles-mock.ts',
-    '^@/(.*)$': '<rootDir>/src/$1',
-    '^quick-lru$': '<rootDir>/tests/__mocks__/quick-lru.ts'
+    '\\.css$': '<rootDir>/predictive-textarea/tests/__mocks__/styles-mock.ts',
+    '^@/(.*)$': '<rootDir>/predictive-textarea/src/$1',
+    '^quick-lru$': '<rootDir>/predictive-textarea/tests/__mocks__/quick-lru.ts'
   },
-  roots: ['<rootDir>/src', '<rootDir>/tests'],
+  roots: ['<rootDir>/predictive-textarea/src', '<rootDir>/predictive-textarea/tests'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
   preset: 'ts-jest',
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
@@ -39,9 +39,9 @@ const config: Config = {
     '\\.d\\.ts$',
   ],
   collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts',
-    '<rootDir>/src/**/*.tsx',
-    '!<rootDir>/src/**/*.d.ts'
+    '<rootDir>/predictive-textarea/src/**/*.ts',
+    '<rootDir>/predictive-textarea/src/**/*.tsx',
+    '!<rootDir>/predictive-textarea/src/**/*.d.ts'
   ]
 }
 

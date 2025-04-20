@@ -6771,13 +6771,13 @@ __metadata:
 
 "predictive-textarea@file:../predictive-textarea::locator=dev%40workspace%3Adev":
   version: 0.1.1
-  resolution: "predictive-textarea@file:../predictive-textarea#../predictive-textarea::hash=fd5392&locator=dev%40workspace%3Adev"
+  resolution: "predictive-textarea@file:../predictive-textarea#../predictive-textarea::hash=78a96c&locator=dev%40workspace%3Adev"
   dependencies:
     trie-search: "npm:^2.2.0"
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/3070841b4271bd351fac4bb8c598b1dcfc6d1b8d961575b5c002c24304b597d1d5736f6e8af92c561349099a013d0a8d7dc7e9a4feff16317b25f1254666c619
+  checksum: 10c0/9a9c164eb94133a8f797df4db56df2ad7579af12e2933d1687453ba4ebbe94356516df9aba129f33b7191bb35f71e2c5d1868c62ab788d599c079649373668df
   languageName: node
   linkType: hard
 
