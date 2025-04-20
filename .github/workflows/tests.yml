@@ -22,8 +22,8 @@ jobs:
         with:
           filters: |
             relevant:
-              - 'src/**'
-              - 'yarn.lock'
+              - 'predictive-textarea/src/**'
+              - 'predictive-textarea/yarn.lock'
 
       - name: Skip tests
         if: steps.filter.outputs.relevant == 'false'
@@ -42,7 +42,7 @@ jobs:
         if: steps.filter.outputs.relevant == 'true'
         uses: bahmutov/npm-install@v1
         with:
-          install-command: yarn install --immutable
+          install-command: cd predictive-textarea && yarn install --immutable
       
       - name: Cache Jest cache
         if: steps.filter.outputs.relevant == 'true'
@@ -55,7 +55,7 @@ jobs:
 
       - name: Run tests
         if: steps.filter.outputs.relevant == 'true'
-        run: yarn test:coverage --shard=${{ matrix.shard }}/4 --maxWorkers=2 --workerIdleMemoryLimit=2048MB
+        run: cd predictive-textarea && yarn test:coverage --shard=${{ matrix.shard }}/4 --maxWorkers=2 --workerIdleMemoryLimit=2048MB
 
       - name: Upload coverage reports to Codecov
         if: steps.filter.outputs.relevant == 'true'
