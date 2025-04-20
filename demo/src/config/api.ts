@@ -28,8 +28,6 @@ function getApiUrl(): string {
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
       return API_CONFIG.local;
     }
-  }
-  
   // Default to local API since we now have API routes in the Next.js app
   return API_CONFIG.local;
 }
