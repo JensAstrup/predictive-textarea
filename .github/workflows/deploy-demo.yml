@@ -33,23 +33,25 @@ jobs:
         with:
           node-version: '22'
           cache: 'yarn'
+          cache-dependency-path: |
+            yarn.lock
+            demo/yarn.lock
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Install dependencies
-        run: |
-          yarn install
-          cd demo
-          yarn install
+      - name: Install main package dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Build main package
         run: yarn build
 
+      - name: Install demo dependencies
+        run: yarn install --frozen-lockfile
+
       - name: Build demo
-        run: |
-          cd demo
-          yarn build
+        working-directory: demo
+        run: yarn build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
