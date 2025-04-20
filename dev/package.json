@@ -1,11 +1,12 @@
 {
-  "name": "predictive-textarea-demo",
-  "private": true,
+  "name": "predictive-textarea-dev",
   "type": "module",
+  "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "vite",
+    "dev:api": "node api-server.js",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.0",
@@ -16,9 +17,8 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "lucide-react": "^0.344.0",
-    "next": "^14.1.0",
     "openai": "^4.95.1",
-    "predictive-textarea": "latest",
+    "predictive-textarea": "file:../",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -30,8 +30,11 @@
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.0",
+    "concurrently": "^9.1.2",
     "postcss": "^8.4.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
   }
 }

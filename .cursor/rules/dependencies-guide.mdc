@@ -1,0 +1,40 @@
+---
+description: General rules
+globs: 
+alwaysApply: false
+---
+# Dependencies Guide
+
+## Development Dependencies
+- Yarn 4.x as package manager
+- Vite for development server
+- tsup for bundling the library
+- ESLint for code quality
+
+## Testing Dependencies
+- Jest for running tests
+- ts-jest for TypeScript support in Jest
+- jest-environment-jsdom for browser API simulation
+- Testing Library:
+  - @testing-library/react for component testing
+  - @testing-library/jest-dom for DOM assertions
+
+## Adding New Dependencies
+Always use yarn to add dependencies:
+
+```bash
+# Add a regular dependency
+yarn add <package-name>
+
+# Add a development dependency
+yarn add -D <package-name>
+
+# Add a peer dependency
+yarn add -P <package-name>
+```
+
+## Versioning
+- Use compatible version ranges (^) for most dependencies
+- Lock specific versions when necessary for stability
+- Peer dependencies should have flexible ranges
+   ``` 

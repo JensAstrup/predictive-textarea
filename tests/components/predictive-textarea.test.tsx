@@ -67,7 +67,7 @@ describe('PredictiveTextarea', () => {
     )
 
     const textareaElement = screen.getByRole('textbox')
-    expect(textareaElement).toHaveAttribute('data-placeholder', 'Type something...')
+    expect(textareaElement).toHaveAttribute('aria-placeholder', 'Type something...')
   })
 
   it('should render with initial value when provided', () => {
@@ -143,9 +143,12 @@ describe('PredictiveTextarea', () => {
       fireEvent.focus(textareaElement)
     })
 
-    const prediction = screen.getByTestId('content-prediction')
-    expect(prediction).toBeInTheDocument()
-    expect(prediction.textContent).toBe(' predicted text')
+    expect(textareaElement).toHaveAttribute('aria-expanded', 'true')
+    expect(textareaElement).toHaveAttribute('aria-activedescendant', 'pred-123')
+
+    const srText = screen.getByText(/Suggestion available:/i)
+    expect(srText).toBeInTheDocument()
+    expect(srText.textContent).toContain('predicted text')
   })
 
   it('should accept prediction when Tab key is pressed', () => {

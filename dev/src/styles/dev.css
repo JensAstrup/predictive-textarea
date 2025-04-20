@@ -1,0 +1,27 @@
+.dev-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dev-header {
+  margin-bottom: 2rem;
+}
+
+.dev-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.dev-description {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.dev-main {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

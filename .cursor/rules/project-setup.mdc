@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Setup Information
+
+## Project Structure
+- Root project: Predictive Textarea library
+- `demo/`: Demo application showing library usage
+- `dev/`: Development environment for the library
+- `src/`: Main library source code
+- `tests/`: Tests for the library components
+
+## Package Management
+- Use **yarn** for all package management operations
+- The project uses Yarn 4.x
+
+## Testing Setup
+- Jest with ts-jest is used for testing
+- Root configuration in `jest.config.ts`
+- Test files are in the `tests/` directory
+- A file at src/components/example.tsx would have a test at tests/components/example.test.ts
