@@ -42,7 +42,7 @@ jobs:
         if: steps.filter.outputs.relevant == 'true'
         uses: bahmutov/npm-install@v1
         with:
-          working-directory: predictive-textarea
+          working-directory: predictive-textarea/predictive-textarea
           install-command: yarn install --immutable
       
       - name: Cache Jest cache
