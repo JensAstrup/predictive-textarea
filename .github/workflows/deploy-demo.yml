@@ -34,22 +34,19 @@ jobs:
           node-version: '22'
           cache: 'yarn'
           cache-dependency-path: |
-            predictive-textarea/yarn.lock
+            yarn.lock
             demo/yarn.lock
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Install main package dependencies
-        working-directory: predictive-textarea
         run: yarn install --frozen-lockfile
 
       - name: Build main package
-        working-directory: predictive-textarea
         run: yarn build
 
       - name: Install demo dependencies
-        working-directory: demo
         run: yarn install --frozen-lockfile
 
       - name: Build demo
