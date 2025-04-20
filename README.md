@@ -11,6 +11,13 @@ A textarea component with AI-powered content prediction for React applications. 
 - ♿ Accessible design
 - 💻 Framework-agnostic (works with or without shadcn/ui)
 
+## Demo
+
+You can see a demo of the component [here](https://jensastrup.github.io/predictive-textarea/) which includes options to test different variations of the component.
+
+![Demo Preview](demo/public/demo.gif)
+
+
 ## Installation
 
 ```bash
