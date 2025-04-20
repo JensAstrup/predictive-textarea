@@ -7,11 +7,12 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../src'),
+      'predictive-textarea': path.resolve(__dirname, '../src')
     },
   },
   server: {
     port: 5173,
+    hmr: true
   },
   optimizeDeps: {
     include: ['predictive-textarea'],

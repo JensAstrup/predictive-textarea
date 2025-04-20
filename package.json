@@ -4,7 +4,7 @@
   "description": "A rich text input with AI-powered autocomplete content predictions for React",
   "type": "module",
   "workspaces": [
-    "demo"
+    "dev"
   ],
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",

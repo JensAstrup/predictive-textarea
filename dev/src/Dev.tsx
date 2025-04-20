@@ -1,6 +1,6 @@
 import React from 'react'
-import { PredictiveTextarea } from '@/components/predictive-textarea'
-import './textarea-styles.css'
+import { PredictiveTextarea } from 'predictive-textarea'
+import './styles/textarea-styles.css'
 import { fetchPrediction } from './utils/api-client'
 
 function Dev(): React.ReactElement {

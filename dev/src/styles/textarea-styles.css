@@ -1,0 +1,46 @@
+/* Custom styles for PredictiveTextarea */
+.custom-textarea {
+  @apply min-h-[200px] h-full w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  display: block !important;
+}
+
+.custom-textarea>div[contenteditable] {
+  min-height: inherit;
+  height: 100%;
+  width: 100%;
+}
+
+.custom-textarea:focus,
+.custom-textarea:focus-within {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 1px hsla(var(--primary), 0.3) !important;
+}
+
+/* Custom prediction text styling */
+.custom-prediction {
+  font-style: italic !important;
+  text-decoration: underline dotted !important;
+  text-underline-offset: 2px !important;
+}
+
+/* Indigo style prediction */
+.prediction-indigo {
+  @apply text-indigo-500 opacity-80;
+}
+
+/* Subtle prediction */
+.prediction-subtle {
+  @apply text-muted-foreground italic;
+}
+
+/* Fancy prediction */
+.prediction-fancy {
+  @apply bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent opacity-80;
+}
+
+/* For proper spacing and centering of ghost text */
+[contenteditable] {
+  /* padding: 12px !important; */
+  line-height: 1.6 !important;
+  outline: none !important;
+}

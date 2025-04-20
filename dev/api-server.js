@@ -1,17 +1,13 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import express from 'express';
+import cors from 'cors';
 
-type PredictionResponse = {
-  prediction: string;
-};
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<PredictionResponse>
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ prediction: '' });
-  }
+app.use(express.json());
+app.use(cors());
 
+app.post('/api/predict', (req, res) => {
   try {
     const { text } = req.body;
 
@@ -19,8 +15,7 @@ export default async function handler(
       return res.status(400).json({ prediction: '' });
     }
 
-    // TODO: Implement actual prediction logic here
-    // For now, return a mock prediction
+    // Mock prediction logic
     const mockPrediction = `Mock prediction for: ${text}`;
     
     return res.status(200).json({ prediction: mockPrediction });
@@ -28,4 +23,8 @@ export default async function handler(
     console.error('Error processing prediction request:', error);
     return res.status(500).json({ prediction: '' });
   }
-} 
+});
+
+app.listen(PORT, () => {
+  console.log(`API server running on http://localhost:${PORT}`);
+}); 
