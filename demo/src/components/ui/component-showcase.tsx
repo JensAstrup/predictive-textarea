@@ -47,10 +47,12 @@ function ComponentShowcase({
           'rounded-b-lg'
         )}>
           <TabsContent value="preview" className={cn(
-            'flex items-center justify-center p-6',
+            'flex items-center justify-center p-6 min-h-[300px] h-full w-full',
             variant === 'card' ? 'border border-border rounded-md bg-card/25' : 'border border-border rounded-md'
           )}>
-            {preview}
+            <div className="w-full h-full">
+              {preview}
+            </div>
           </TabsContent>
 
           <TabsContent value="code">

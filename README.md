@@ -48,6 +48,32 @@ The demo shows different examples of the PredictiveTextarea component:
 
 Press Tab to accept suggestions when they appear.
 
+## Development
+
+This project provides two environments for development:
+
+### Development Server
+
+Run the development server for local development:
+
+```bash
+# Start the development server (Vite)
+yarn dev
+```
+
+The development server is located in the `dev/` directory and provides a sandbox environment for testing and developing the component.
+
+### Demo Application
+
+Run the demo application to see the component in action in various scenarios:
+
+```bash
+# Run the Next.js demo
+yarn demo
+```
+
+The demo is located in the `demo/` directory and showcases different usage examples of the component in a Next.js application.
+
 ## Usage
 
 ```tsx
