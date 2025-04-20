@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { PredictiveTextarea } from 'predictive-textarea'
 import './textarea-styles.css'

@@ -4,7 +4,8 @@
   "description": "A rich text input with AI-powered autocomplete content predictions for React",
   "type": "module",
   "workspaces": [
-    "dev"
+    "dev",
+    "demo"
   ],
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -22,12 +23,11 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
+    "dev": "cd dev && npm run dev",
     "lint": "eslint src/**/*.ts*",
     "clean": "rm -rf dist",
-    "demo:dev": "cd demo && yarn dev",
-    "demo:build": "yarn build && cd demo && yarn build",
-    "demo": "yarn demo:dev",
+    "demo": "cd demo && npm run dev",
+    "dev:api": "cd dev && npm run dev:api",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

@@ -1,11 +1,9 @@
 // API configuration
 const API_CONFIG = {
   // Local development
-  local: 'http://localhost:3001/api/predict',
-  // GitHub Pages deployment
-  production: 'https://jensastrup.github.io/predictive-textarea/api/predict',
+  local: '/api/predict',
   // Vercel deployment (if you deploy the API separately)
-  vercel: 'https://predictive-textarea-api.vercel.app/api/predict',
+  vercel: process.env.NEXT_PUBLIC_API_URL || '/api/predict',
 }
 
 // Extend Window interface to include our environment variables
@@ -21,24 +19,20 @@ declare global {
 function getApiUrl(): string {
   // Check if we're in a browser environment
   if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname
+    // If the environment variable is set, use it
+    if (process.env.NEXT_PUBLIC_API_URL) {
+      return process.env.NEXT_PUBLIC_API_URL;
+    }
     
     // Local development
+    const hostname = window.location.hostname;
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
-      return API_CONFIG.local
+      return API_CONFIG.local;
     }
-    
-    // GitHub Pages
-    if (hostname.includes('github.io')) {
-      return API_CONFIG.production
-    }
-    
-    // Default to Vercel deployment
-    return API_CONFIG.vercel
   }
   
-  // Server-side default
-  return API_CONFIG.vercel
+  // Default to local API since we now have API routes in the Next.js app
+  return API_CONFIG.local;
 }
 
-export const API_URL = getApiUrl() 
+export const API_URL = getApiUrl(); 
