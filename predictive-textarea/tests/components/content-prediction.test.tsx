@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import { ContentPrediction, predictionIdAttribute } from '@/components/content-prediction'
+import { ContentPrediction, predictionIdAttribute } from '../../package/src/components/content-prediction'
 
 
 describe('ContentPrediction', () => {

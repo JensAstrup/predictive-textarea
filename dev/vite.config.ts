@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'predictive-textarea': path.resolve(__dirname, '../src')
+      'predictive-textarea': path.resolve(__dirname, '../predictive-textarea/src')
     },
   },
   server: {

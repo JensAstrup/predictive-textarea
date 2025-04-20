@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react'
 
-import { useCaretPosition } from '@/hooks/use-caret-position'
-import { getTextUpUntilCaretInElement } from '@/utils/get-text-up-until-caret-in-element'
-import { isCaretAtLineEnd } from '@/utils/is-caret-at-line-end'
+import { useCaretPosition } from '../package/src/hooks/use-caret-position'
+import { getTextUpUntilCaretInElement } from '../package/src/utils/get-text-up-until-caret-in-element'
+import { isCaretAtLineEnd } from '../package/src/utils/is-caret-at-line-end'
 
 
 jest.mock('@/utils/get-text-up-until-caret-in-element', () => ({

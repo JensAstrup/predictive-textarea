@@ -1,4 +1,4 @@
-import { stringHash } from '@/utils/hash'
+import { stringHash } from '../../package/src/utils/hash'
 
 
 describe('stringHash', () => {

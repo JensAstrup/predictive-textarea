@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn'
+import { cn } from '../../package/src/utils/cn'
 
 
 describe('cn utility', () => {

@@ -1,8 +1,8 @@
 import { render, screen, fireEvent, act } from '@testing-library/react'
 
-import { PredictiveTextarea } from '@/components/predictive-textarea'
-import { useCaretPosition } from '@/hooks/use-caret-position'
-import { useContentPrediction } from '@/hooks/use-content-prediction'
+import { PredictiveTextarea } from '../../package/src/components/predictive-textarea'
+import { useCaretPosition } from '../../package/src/hooks/use-caret-position'
+import { useContentPrediction } from '../../package/src/hooks/use-content-prediction'
 
 
 jest.mock('@/hooks/use-content-prediction', () => ({
