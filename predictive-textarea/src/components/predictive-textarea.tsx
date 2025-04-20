@@ -1,11 +1,11 @@
 import React, { useRef, SyntheticEvent, KeyboardEvent, FocusEvent, useState, useEffect, CSSProperties } from 'react'
 
-import { useCaretPosition } from '../hooks/use-caret-position'
-import { useContentPrediction } from '../hooks/use-content-prediction'
-import { PredictiveTextareaProps } from '../types'
-import { cn } from '../utils/cn'
+import { useCaretPosition } from '@/hooks/use-caret-position'
+import { useContentPrediction } from '@/hooks/use-content-prediction'
+import { PredictiveTextareaProps } from '@/types'
+import { cn } from '@/utils/cn'
 
-import { ContentPrediction } from './content-prediction'
+import { ContentPrediction } from '@/components/content-prediction'
 
 const DEFAULT_LINE_HEIGHT_PX = 30
 

@@ -1,4 +1,4 @@
-import { isCaretAtLineEnd } from '../../package/src/utils/is-caret-at-line-end'
+import { isCaretAtLineEnd } from '@/utils/is-caret-at-line-end'
 
 
 describe('isCaretAtLineEnd', () => {
