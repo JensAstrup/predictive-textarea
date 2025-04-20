@@ -241,7 +241,6 @@ function Example() {
                 description="Textarea with initial value"
                 preview={
                   <PredictiveTextarea
-                    placeholder="Start typing..."
                     getContentPredictionFn={mockPrediction}
                     rows={3}
                     value="This is some initial text"
