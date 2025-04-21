@@ -1,8 +1,8 @@
 // Export client components from client.ts
-export * from './client';
+export * from './client'
 
 // Export the OpenAI functionality
-export { predictInputContent } from './openai/predict-input-content';
+export { predictInputContent } from './openai/predict-input-content'
 
 // Default export
 export { PredictiveTextarea as default } from './components/predictive-textarea'

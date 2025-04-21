@@ -14,10 +14,6 @@ export function DevPlayground(): React.ReactElement {
   const [rows, setRows] = useState(1)
   const [disabled, setDisabled] = useState(false)
 
-  const mockPrediction = async (text: string) => {
-    await new Promise(resolve => setTimeout(resolve, predictionDelay))
-    return ` Suggested completion for: ${text}`
-  }
 
   const getPredictionClassName = () => {
     switch (predictionStyle) {

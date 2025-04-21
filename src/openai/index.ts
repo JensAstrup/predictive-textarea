@@ -1,1 +1,1 @@
-export { predictInputContent } from './predict-input-content' 
+export { predictInputContent } from './predict-input-content'

@@ -1,4 +1,6 @@
-import OpenAI from "openai"
+import 'openai/shims/node'
+import OpenAI from 'openai'
+import 'server-only'
 
 
 const INSTRUCTIONS = `System prompt:
@@ -73,7 +75,7 @@ function getClient(): OpenAI {
 async function predictInputContent(text: string): Promise<string> {
   const client = getClient()
   const response = await client.responses.create({
-    model: 'gpt-4o-mini',
+    model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
     instructions: INSTRUCTIONS,
     input: `Respond in json format. Content: "${text}"`,
     text: {
