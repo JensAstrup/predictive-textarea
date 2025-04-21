@@ -182,7 +182,7 @@ This component is designed to be framework-agnostic and can be integrated with a
 - It follows common styling patterns for focus states, borders, and other UI elements
 - The demo showcases integration with various UI component structures and themes
 
-## Caching & Performance
+## Caching and Performance
 
 The PredictiveTextarea component includes built-in caching and performance optimization features to minimize API calls and improve user experience.
 
@@ -223,11 +223,17 @@ To prevent excessive API calls as users type:
 - Optimizes the balance between responsiveness and API usage
 
 ```tsx
-// Configuring debounce time
-<PredictiveTextarea
-  getContentPredictionFn={getContentPrediction}
-  debounceTime={500} // Increase to 500ms for slower typing or expensive API calls
-/>
++import React from 'react';  
++import { PredictiveTextarea } from 'predictive-textarea';  
++  
+ function MyComponent() {  
+   return (  
+     <PredictiveTextarea  
+       getContentPredictionFn={getContentPrediction}  
+       debounceTime={500} // Increase to 500ms for slower typing or expensive API calls  
+     />  
+   );  
+ } 
 ```
 
 ### Performance Benefits
@@ -238,8 +244,6 @@ The caching and debouncing mechanisms provide several performance benefits:
 - Improved user experience during backspace operations where cached predictions can be reused
 - Lower latency for cached predictions (near-instant suggestions)
 - Deterministic prediction IDs ensure proper component rerendering
-
-### Cache Configuration
 
 While the cache is configured with sensible defaults, you can customize its behavior by adjusting the `debounceTime` prop:
 
