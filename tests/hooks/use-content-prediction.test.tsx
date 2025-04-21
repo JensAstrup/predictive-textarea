@@ -1,16 +1,12 @@
-import { act, renderHook } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 
-import { useContentPrediction } from '../../src/hooks/use-content-prediction'
+import { useContentPrediction } from '@/hooks/use-content-prediction'
 
-// Create a mock for the trie-search library
 jest.mock('trie-search', () => {
-  const mockSearch = jest.fn().mockReturnValue([])
-  const mockMap = jest.fn()
-
   return function () {
     return {
-      search: mockSearch,
-      map: mockMap
+      search: jest.fn().mockReturnValue([]),
+      map: jest.fn()
     }
   }
 })
@@ -22,25 +18,29 @@ describe('useContentPrediction', () => {
     jest.clearAllMocks()
   })
 
-  it('should provide a prediction and clear function', () => {
+  it('should return the expected interface', () => {
     const { result } = renderHook(() => useContentPrediction(mockGetContentPredictionFn, {}))
 
-    expect(result.current.prediction).toBeNull()
-    expect(typeof result.current.setInputText).toBe('function')
-    expect(typeof result.current.clearPrediction).toBe('function')
+    expect(result.current).toEqual({
+      prediction: null,
+      setInputText: expect.any(Function),
+      clearPrediction: expect.any(Function)
+    })
   })
 
-  it('should expose a clearPrediction function', () => {
+  it('should allow clearing predictions', () => {
     const { result } = renderHook(() => useContentPrediction(mockGetContentPredictionFn, {}))
 
-    // Just verify the function exists
-    expect(typeof result.current.clearPrediction).toBe('function')
-
-    // Call it to ensure it doesn't throw
-    act(() => {
+    expect(() => {
       result.current.clearPrediction()
-    })
+    }).not.toThrow()
+  })
 
-    expect(result.current.prediction).toBeNull()
+  it('should allow setting input text', () => {
+    const { result } = renderHook(() => useContentPrediction(mockGetContentPredictionFn, {}))
+
+    expect(() => {
+      result.current.setInputText('test input')
+    }).not.toThrow()
   })
 })

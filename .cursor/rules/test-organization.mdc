@@ -26,4 +26,4 @@ alwaysApply: false
 - Focus on testing one thing per test case
 - Extract common setup code to beforeEach or helper functions
 - For complex components, consider separating rendering tests from behavior tests 
-- Do not write unnecessary comments that explain simple behavior. 
+- Do not write comments that explain simple behavior like "Mock some library" or "Setup mocks".

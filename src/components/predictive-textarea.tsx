@@ -1,11 +1,13 @@
+'use client'
+
 import React, { useRef, SyntheticEvent, KeyboardEvent, FocusEvent, useState, useEffect, CSSProperties } from 'react'
 
+import { ContentPrediction } from '@/components/content-prediction'
 import { useCaretPosition } from '@/hooks/use-caret-position'
 import { useContentPrediction } from '@/hooks/use-content-prediction'
 import { PredictiveTextareaProps } from '@/types'
 import { cn } from '@/utils/cn'
 
-import { ContentPrediction } from '@/components/content-prediction'
 
 const DEFAULT_LINE_HEIGHT_PX = 30
 
@@ -125,7 +127,8 @@ function PredictiveTextarea({
     if (textareaRef.current) {
       if (!hasFocus && !internalValue.trim()) {
         textareaRef.current.innerText = placeholder || ''
-      } else if (!internalValue) {
+      }
+      else if (!internalValue) {
         textareaRef.current.innerText = ''
       }
     }

@@ -87,7 +87,7 @@ import React from 'react';
 import { PredictiveTextarea } from 'predictive-textarea';
 
 // Your content prediction function
-// This should connect to your AI service that generates predictions
+// This should connect to your AI service that generates predictions and return a string
 async function getContentPrediction(text: string): Promise<string> {
   const response = await fetch('your-prediction-api-endpoint', {
     method: 'POST',
@@ -116,6 +116,35 @@ function MyForm() {
 
 export default MyForm;
 ```
+
+## OpenAI Integration
+
+This package includes built-in OpenAI integration for text predictions.
+
+To use the OpenAI integration in a Next.js app:
+
+```typescript
+// app/actions.ts
+'use server'
+
+import { predictInputContent } from 'predictive-textarea/openai'
+
+export async function getPrediction(text: string) {
+  return predictInputContent(text)
+}
+
+// app/components/my-textarea.tsx
+'use client'
+import { PredictiveTextarea } from 'predictive-textarea'
+import { getPrediction } from '../actions'
+
+export function MyTextarea() {
+  return <PredictiveTextarea getContentPredictionFn={getPrediction} />
+}
+```
+
+In order to use the OpenAI integration, you need to set the `OPENAI_API_KEY` environment variable in your Next.js application.
+The `OPENAI_MODEL` environment variable is optional and defaults to `gpt-4o-mini`.
 
 ## Props
 

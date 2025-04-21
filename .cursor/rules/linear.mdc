@@ -1,0 +1,29 @@
+---
+description: Writing issues in linear
+globs: 
+alwaysApply: false
+---
+- Write all issues as user stories ("As a <type of user> I want <something>, so that <reason>"). 
+- Add acceptance criteria to accomplish the issue
+- Do not include writing tests or documentation as acceptance criteria
+
+Examples:
+# Fix navbar on non-index marketing pages
+
+As a visitor, I want to be able to navigate back to the homepage from non-index marketing pages, so that I can navigate around the site in an easy manner. 
+
+## Acceptance Criteria
+
+1. It is possible to navigate to "Demo", "FAQ", etc from the privacy policy, ToS, and changelog pages
+---
+# Support favorite projects
+
+As a host, I want to be able to select my favorited projects so that I can easily estimate the workflow that best suits me.
+
+## Acceptance Criteria
+
+1. Favorite projects appear in the dropdown list.
+2. The dropdown is reorganized to display items in the following order:
+   * Teams
+   * Projects
+   * Views

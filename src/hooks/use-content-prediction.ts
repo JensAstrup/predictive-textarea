@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react'
 import TrieSearch from 'trie-search'
 
@@ -53,7 +55,6 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
     generateId = (inputText, predictionText) => `p-${stringHash(`${inputText}${predictionText}`)}`
   } = options
 
-  const abortController = useRef<AbortController | null>(null)
   const [inputText, setInputText] = useState<string>('')
   const [prediction, setPrediction] = useState<CompletionPrediction | null>(null)
   const lastFetchTimeRef = useRef<number>(0)
@@ -64,13 +65,8 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
       return cachedResults[0] || null
     }
 
-    if (abortController.current) {
-      abortController.current.abort()
-    }
-    abortController.current = new AbortController()
-
     try {
-      const predictionText = await getContentPredictionFn(text, abortController.current.signal)
+      const predictionText = await getContentPredictionFn(text)
       if (!predictionText) return null
 
       const prediction: CompletionPrediction = {
@@ -108,10 +104,6 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
 
     return () => {
       clearTimeout(timer)
-      if (abortController.current) {
-        abortController.current.abort()
-        abortController.current = null
-      }
     }
   }, [inputText, debounceTime])
 
