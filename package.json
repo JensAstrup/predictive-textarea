@@ -38,6 +38,7 @@
     "lint": "eslint src/**/*.ts*",
     "clean": "rm -rf dist",
     "demo": "cd demo && yarn dev",
+    "demo:build": "cd demo && yarn build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
