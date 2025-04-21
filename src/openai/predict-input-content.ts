@@ -1,7 +1,8 @@
+'use server'
+
 import 'openai/shims/node'
 import OpenAI from 'openai'
 import 'server-only'
-
 
 const INSTRUCTIONS = `System prompt:
 - You are an autocomplete system that predicts the most likely next input
