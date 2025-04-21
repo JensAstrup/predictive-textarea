@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '../../utils/cn'
-import { Highlight, themes } from 'prism-react-renderer'
+import { Highlight, themes, Language } from 'prism-react-renderer'
 
 interface CodeBlockProps {
   code: string
@@ -20,7 +20,7 @@ function CodeBlock({
       <Highlight
         theme={themes.palenight}
         code={code}
-        language={language as any}
+        language={language as Language}
       >
         {({ className: highlightClassName, style, tokens, getLineProps, getTokenProps }) => (
           <pre

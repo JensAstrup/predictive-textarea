@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    serverActions: true,
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   async headers() {
     return [

@@ -3,7 +3,7 @@ const API_CONFIG = {
   // Local development
   local: '/api/predict',
   // Vercel deployment (if you deploy the API separately)
-  vercel: process.env.NEXT_PUBLIC_API_URL || '/api/predict',
+  vercel: 'https://predictive-textarea.vercel.app/api/predict',
 }
 
 // Extend Window interface to include our environment variables
@@ -20,17 +20,16 @@ function getApiUrl(): string {
   // Check if we're in a browser environment
   if (typeof window !== 'undefined') {
     // If the environment variable is set, use it
-    if (process.env.NEXT_PUBLIC_API_URL) {
-      return process.env.NEXT_PUBLIC_API_URL;
+    if (window.ENV?.NEXT_PUBLIC_API_URL) {
+      return window.ENV.NEXT_PUBLIC_API_URL;
     }
     
     // Local development
-    const hostname = window.location.hostname;
+    const hostname = window?.location?.hostname;
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
       return API_CONFIG.local;
     }
   }
-  
   // Default to local API since we now have API routes in the Next.js app
   return API_CONFIG.local;
 }

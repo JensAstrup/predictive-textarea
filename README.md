@@ -11,6 +11,12 @@ A textarea component with AI-powered content prediction for React applications. 
 - ♿ Accessible design
 - 💻 Framework-agnostic (works with or without shadcn/ui)
 
+## Demo
+
+You can see a demo of the component [here](https://jensastrup.github.io/predictive-textarea/) which includes options to test different variations of the component.
+
+![Demo Preview](demo/public/demo.gif)
+
 ## Installation
 
 ```bash
@@ -29,7 +35,7 @@ The component has minimal dependencies:
 - **Tailwind CSS**: For styling (or you can provide custom classes)
 - **uuid**: Used internally for prediction ID generation
 
-## Demo
+## Local Demo
 
 To run the demo locally:
 
@@ -81,7 +87,7 @@ import React from 'react';
 import { PredictiveTextarea } from 'predictive-textarea';
 
 // Your content prediction function
-// This should connect to your AI service that generates predictions
+// This should connect to your AI service that generates predictions and return a string
 async function getContentPrediction(text: string): Promise<string> {
   const response = await fetch('your-prediction-api-endpoint', {
     method: 'POST',
@@ -110,6 +116,35 @@ function MyForm() {
 
 export default MyForm;
 ```
+
+## OpenAI Integration
+
+This package includes built-in OpenAI integration for text predictions.
+
+To use the OpenAI integration in a Next.js app:
+
+```typescript
+// app/actions.ts
+'use server'
+
+import { predictInputContent } from 'predictive-textarea/openai'
+
+export async function getPrediction(text: string) {
+  return predictInputContent(text)
+}
+
+// app/components/my-textarea.tsx
+'use client'
+import { PredictiveTextarea } from 'predictive-textarea'
+import { getPrediction } from '../actions'
+
+export function MyTextarea() {
+  return <PredictiveTextarea getContentPredictionFn={getPrediction} />
+}
+```
+
+In order to use the OpenAI integration, you need to set the `OPENAI_API_KEY` environment variable in your Next.js application.
+The `OPENAI_MODEL` environment variable is optional and defaults to `gpt-4o-mini`.
 
 ## Props
 
@@ -146,6 +181,75 @@ This component is designed to be framework-agnostic and can be integrated with a
 - It uses standard Tailwind CSS class naming conventions
 - It follows common styling patterns for focus states, borders, and other UI elements
 - The demo showcases integration with various UI component structures and themes
+
+## Caching and Performance
+
+The PredictiveTextarea component includes built-in caching and performance optimization features to minimize API calls and improve user experience.
+
+### Content Prediction Caching
+
+The component uses a trie-based caching mechanism to store and retrieve predictions:
+
+- Previously requested predictions are cached to avoid redundant API calls
+- The cache is optimized for prefix matching, making it efficient for text input scenarios
+- Default cache size is 100 entries, providing a balance between memory usage and performance
+
+```tsx
+// Example showing caching behavior
+function MyForm() {
+  // This function will only be called once for the same input
+  // even if the component re-renders
+  async function getContentPrediction(text: string) {
+    console.log('Making API call for:', text);
+    // Your prediction API call here
+    return 'predicted text';
+  }
+
+  return (
+    <PredictiveTextarea
+      getContentPredictionFn={getContentPrediction}
+      debounceTime={300} // Configure debounce time
+    />
+  );
+}
+```
+
+### Debouncing Mechanism
+
+To prevent excessive API calls as users type:
+
+- Input requests are debounced by default (300ms)
+- Adjustable via the `debounceTime` prop to match your use case
+- Optimizes the balance between responsiveness and API usage
+
+```tsx
++import React from 'react';  
++import { PredictiveTextarea } from 'predictive-textarea';  
++  
+ function MyComponent() {  
+   return (  
+     <PredictiveTextarea  
+       getContentPredictionFn={getContentPrediction}  
+       debounceTime={500} // Increase to 500ms for slower typing or expensive API calls  
+     />  
+   );  
+ } 
+```
+
+### Performance Benefits
+
+The caching and debouncing mechanisms provide several performance benefits:
+
+- Reduced API calls, especially for repetitive text patterns
+- Improved user experience during backspace operations where cached predictions can be reused
+- Lower latency for cached predictions (near-instant suggestions)
+- Deterministic prediction IDs ensure proper component rerendering
+
+While the cache is configured with sensible defaults, you can customize its behavior by adjusting the `debounceTime` prop:
+
+- Lower values (e.g., 100ms) provide more responsive predictions but increase API calls
+- Higher values (e.g., 500ms) reduce API calls but may feel less responsive
+- The default value (300ms) provides a good balance for most use cases
 
 ## Attribution
 
