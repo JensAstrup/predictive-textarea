@@ -143,7 +143,8 @@ export function MyTextarea() {
 }
 ```
 
-Remember to set the `OPENAI_API_KEY` environment variable in your Next.js application.
+In order to use the OpenAI integration, you need to set the `OPENAI_API_KEY` environment variable in your Next.js application.
+The `OPENAI_MODEL` environment variable is optional and defaults to `gpt-4o-mini`.
 
 ## Props
 
