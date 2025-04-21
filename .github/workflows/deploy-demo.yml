@@ -51,7 +51,7 @@ jobs:
 
       - name: Build demo
         working-directory: demo
-        run: yarn build
+        run: yarn demo:build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
