@@ -4,6 +4,7 @@ import 'openai/shims/node'
 import OpenAI from 'openai'
 import 'server-only'
 
+
 const INSTRUCTIONS = `System prompt:
 - You are an autocomplete system that predicts the most likely next input
 - The input text is the preceding text in a comment form
