@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { PredictiveTextarea } from 'predictive-textarea'
 import { ThemeToggle } from './theme-toggle'
-import { predictInput } from '@/actions'
+import { predictInput } from '@/actions/predict-input'
 
 export function DevPlayground(): React.ReactElement {
   const [predictionDelay, setPredictionDelay] = useState(500)
