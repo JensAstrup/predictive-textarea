@@ -1,9 +1,10 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react'
 import TrieSearch from 'trie-search'
 
 import { CompletionPrediction, GetCompletionContentPredictionFn } from '@/types'
 import { stringHash } from '@/utils/hash'
-
 
 const DEFAULT_CACHE_SIZE = 100
 
@@ -70,7 +71,7 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
     abortController.current = new AbortController()
 
     try {
-      const predictionText = await getContentPredictionFn(text, abortController.current.signal)
+      const predictionText = await getContentPredictionFn(text)
       if (!predictionText) return null
 
       const prediction: CompletionPrediction = {

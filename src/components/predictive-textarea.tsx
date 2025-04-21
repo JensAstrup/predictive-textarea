@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useRef, SyntheticEvent, KeyboardEvent, FocusEvent, useState, useEffect, CSSProperties } from 'react'
 
 import { useCaretPosition } from '@/hooks/use-caret-position'

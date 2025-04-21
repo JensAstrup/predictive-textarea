@@ -13,13 +13,27 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "default": "./dist/index.js"
+      "require": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js",
+      "require": "./dist/client.js"
+    },
+    "./openai": {
+      "types": "./dist/openai/index.d.ts",
+      "import": "./dist/openai/index.js",
+      "require": "./dist/openai/index.js"
+    },
+    "./openai/predict-input-content": {
+      "types": "./dist/openai/predict-input-content.d.ts",
+      "import": "./dist/openai/predict-input-content.js",
+      "require": "./dist/openai/predict-input-content.js"
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "watch": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "build": "tsup --config tsup.config.ts",
+    "watch": "tsup --config tsup.config.ts --watch",
     "dev": "cd dev && npm run dev",
     "lint": "eslint src/**/*.ts*",
     "clean": "rm -rf dist",
@@ -44,6 +58,8 @@
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^4.4.0",
     "dotenv": "^16.5.0",
+    "esbuild": "^0.25.2",
+    "esbuild-plugin-preserve-directives": "^0.0.11",
     "execa": "^9.5.2",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
@@ -59,6 +75,8 @@
     "vite-plugin-dts": "^3.9.1"
   },
   "dependencies": {
+    "openai": "^4.95.1",
+    "server-only": "^0.0.1",
     "trie-search": "^2.2.0"
   },
   "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
