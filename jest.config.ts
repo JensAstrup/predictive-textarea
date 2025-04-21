@@ -19,7 +19,8 @@ const config: Config = {
   moduleNameMapper: {
     '\\.css$': '<rootDir>/tests/__mocks__/styles-mock.ts',
     '^@/(.*)$': '<rootDir>/src/$1',
-    '^quick-lru$': '<rootDir>/tests/__mocks__/quick-lru.ts'
+    '^quick-lru$': '<rootDir>/tests/__mocks__/quick-lru.ts',
+    '^server-only$': '<rootDir>/tests/__mocks__/server-only.ts'
   },
   roots: ['<rootDir>/src', '<rootDir>/tests'],
   testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
