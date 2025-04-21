@@ -44,14 +44,16 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build main package
+        working-directory: src
         run: yarn build
 
       - name: Install demo dependencies
+        working-directory: demo
         run: yarn install --frozen-lockfile
 
       - name: Build demo
         working-directory: demo
-        run: yarn demo:build
+        run: yarn build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
