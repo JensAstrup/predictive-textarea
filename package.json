@@ -31,10 +31,6 @@
       "require": "./dist/openai/predict-input-content.js"
     }
   },
-  "workspaces": [
-    "src",
-    "demo"
-  ],
   "scripts": {
     "build": "tsup --config tsup.config.ts",
     "watch": "tsup --config tsup.config.ts --watch",
