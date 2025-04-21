@@ -179,7 +179,7 @@ function Example() {
             <div className="flex items-center space-x-4">
               <ThemeToggle />
               <div className="px-4 py-2 text-sm text-muted-foreground">
-                <a href="https://github.com/JensAstrup/predictive-textarea" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://github.com/JensAstrup/predictive-textarea" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
           </div>
@@ -210,6 +210,8 @@ function Example() {
                     debounceTime={500}
                     placeholder="Start typing to see predictions..."
                     className="custom-textarea"
+                    disabled={false}
+                    predictionClassName="text-muted-foreground"
                   />
                 }
                 code={defaultCode}
@@ -227,9 +229,11 @@ function Example() {
                   <PredictiveTextarea
                     placeholder="This textarea is disabled"
                     getContentPredictionFn={mockPrediction}
+                    debounceTime={300}
                     rows={2}
                     disabled
                     className="custom-textarea"
+                    predictionClassName="text-muted-foreground"
                   />
                 }
                 code={disabledCode}
@@ -243,9 +247,12 @@ function Example() {
                 preview={
                   <PredictiveTextarea
                     getContentPredictionFn={mockPrediction}
+                    debounceTime={300}
                     rows={3}
                     value="This is some initial text"
                     className="custom-textarea"
+                    disabled={false}
+                    predictionClassName="text-muted-foreground"
                   />
                 }
                 code={prefilledCode}
@@ -270,6 +277,7 @@ function Example() {
                     debounceTime={300}
                     placeholder="Start typing to see indigo predictions..."
                     className="custom-textarea"
+                    disabled={false}
                     predictionClassName="prediction-indigo"
                   />
                 }
@@ -287,6 +295,7 @@ function Example() {
                     debounceTime={300}
                     placeholder="Start typing to see subtle predictions..."
                     className="custom-textarea"
+                    disabled={false}
                     predictionClassName="prediction-subtle"
                   />
                 }
@@ -304,6 +313,7 @@ function Example() {
                     debounceTime={300}
                     placeholder="Start typing to see fancy predictions..."
                     className="custom-textarea"
+                    disabled={false}
                     predictionClassName="prediction-fancy"
                   />
                 }
