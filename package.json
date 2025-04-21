@@ -1,6 +1,6 @@
 {
   "name": "predictive-textarea",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "A rich text input with AI-powered autocomplete content predictions for React",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -31,6 +31,10 @@
       "require": "./dist/openai/predict-input-content.js"
     }
   },
+  "workspaces": [
+    "src",
+    "demo"
+  ],
   "scripts": {
     "build": "tsup --config tsup.config.ts",
     "watch": "tsup --config tsup.config.ts --watch",
