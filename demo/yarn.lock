@@ -872,7 +872,6 @@ __metadata:
     next: "npm:^14.1.0"
     openai: "npm:^4.95.1"
     postcss: "npm:^8.4.0"
-    predictive-textarea: "npm:latest"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -2198,18 +2197,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"predictive-textarea@npm:latest":
-  version: 0.1.1
-  resolution: "predictive-textarea@npm:0.1.1"
-  dependencies:
-    trie-search: "npm:^2.2.0"
-  peerDependencies:
-    react: ^18.0.0
-    react-dom: ^18.0.0
-  checksum: 10c0/94bf5ecda8cdb2222071dceb5f37014dc6ad71efaec0eccc429c937560634428acfda8532094648d26984c9cd6d39699d22a4e321bfcef7d7f351a735a47854f
-  languageName: node
-  linkType: hard
-
 "prism-react-renderer@npm:^2.4.1":
   version: 2.4.1
   resolution: "prism-react-renderer@npm:2.4.1"
@@ -2777,7 +2764,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"trie-search@npm:^2.1.0, trie-search@npm:^2.2.0":
+"trie-search@npm:^2.1.0":
   version: 2.2.0
   resolution: "trie-search@npm:2.2.0"
   dependencies:

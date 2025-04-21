@@ -6,8 +6,8 @@ import './textarea-styles.css'
 import { ComponentShowcase } from './components/ui/component-showcase'
 import { ThemeProvider } from './components/theme-provider'
 import { ThemeToggle } from './components/theme-toggle'
-// import { predictInput } from './app/actions/predict-input'
-import { predictInput } from 'predictive-textarea/client'
+import { predictInput } from './app/actions/predict-input'
+
 
 function Demo(): React.ReactElement {
   const mockPrediction = async (text: string) => {
