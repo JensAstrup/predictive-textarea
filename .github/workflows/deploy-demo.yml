@@ -44,9 +44,11 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build main package
+        working-directory: src
         run: yarn build
 
       - name: Install demo dependencies
+        working-directory: demo
         run: yarn install --frozen-lockfile
 
       - name: Build demo
