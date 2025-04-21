@@ -6,7 +6,8 @@ import './textarea-styles.css'
 import { ComponentShowcase } from './components/ui/component-showcase'
 import { ThemeProvider } from './components/theme-provider'
 import { ThemeToggle } from './components/theme-toggle'
-import { fetchPrediction } from './utils/api-client'
+// import { predictInput } from './app/actions/predict-input'
+import { predictInput } from 'predictive-textarea/client'
 
 function Demo(): React.ReactElement {
   const mockPrediction = async (text: string) => {
@@ -205,7 +206,7 @@ function Example() {
                 description="Uses the default prediction styling (text-muted-foreground) with OpenAI integration"
                 preview={
                   <PredictiveTextarea
-                    getContentPredictionFn={fetchPrediction}
+                    getContentPredictionFn={predictInput}
                     debounceTime={500}
                     placeholder="Start typing to see predictions..."
                     className="custom-textarea"
