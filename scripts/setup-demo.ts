@@ -1,5 +1,4 @@
 import { execSync } from 'child_process'
-import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -24,21 +23,9 @@ function setupDemo(): void {
   console.log('Building library...')
   execSync('yarn build', { stdio: 'inherit', cwd: rootDir })
 
-  // Create a tarball of the built library
-  console.log('Creating library tarball...')
-  execSync('yarn pack', { stdio: 'inherit', cwd: rootDir })
-
-  // Get the tarball filename
-  const files = fs.readdirSync(rootDir)
-  const tarball = files.find(file => file === 'package.tgz')
-
-  if (!tarball) {
-    throw new Error('Could not find library tarball (package.tgz)')
-  }
-
-  // Install the tarball in the demo directory
+  // Install the library in the demo directory using direct file reference
   console.log('Installing library in demo...')
-  execSync(`yarn add predictive-textarea@file:../${tarball}`, { stdio: 'inherit', cwd: demoDir })
+  execSync('yarn add predictive-textarea@file:..', { stdio: 'inherit', cwd: demoDir })
 
   console.log('Demo setup complete!')
 }
