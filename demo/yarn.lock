@@ -1466,7 +1466,7 @@ __metadata:
     next: "npm:^15.3.1"
     openai: "npm:^4.95.1"
     postcss: "npm:^8.4.0"
-    predictive-textarea: "link:../dist"
+    predictive-textarea: "link:.."
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -3680,9 +3680,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"predictive-textarea@link:../dist::locator=demo%40workspace%3A.":
+"predictive-textarea@link:..::locator=demo%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "predictive-textarea@link:../dist::locator=demo%40workspace%3A."
+  resolution: "predictive-textarea@link:..::locator=demo%40workspace%3A."
   languageName: node
   linkType: soft
 
