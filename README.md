@@ -43,9 +43,17 @@ To run the demo locally:
 # Install dependencies
 yarn install
 
+# Setup the demo (builds the library and sets it up for the demo)
+yarn setup-demo
+
 # Run the demo
 yarn demo
+
+# Or run both setup and the demo in one command
+yarn dev:demo
 ```
+
+The setup script builds the library, creates a tarball, and installs it in the demo's node_modules, ensuring the demo always uses your latest code without version conflicts.
 
 The demo shows different examples of the PredictiveTextarea component:
 - Basic usage with content prediction
@@ -74,11 +82,37 @@ The development server is located in the `dev/` directory and provides a sandbox
 Run the demo application to see the component in action in various scenarios:
 
 ```bash
-# Run the Next.js demo
-yarn demo
+# Setup and run the Next.js demo (recommended)
+yarn dev:demo
+
+# Or run steps separately
+yarn setup-demo  # Build library, create tarball, and install in demo
+yarn demo        # Run the demo only
 ```
 
 The demo is located in the `demo/` directory and showcases different usage examples of the component in a Next.js application.
+
+### Development Workflow
+
+The recommended workflow:
+
+1. Make changes to the library code in `src/`
+2. Run `yarn dev:demo` which will:
+   - Build the library
+   - Create a tarball and install it in the demo
+   - Start both the watch process for the library and the demo server
+3. Any changes to the library will trigger a rebuild, and the demo will use the updated code
+
+## Deployment
+
+When deploying the demo to platforms like Vercel, the build process automatically:
+
+1. Builds the library 
+2. Creates a tarball of the built package
+3. Installs the tarball in the demo
+4. Builds the demo application
+
+This approach ensures reliable deployment on CI/CD platforms by using standard npm packaging methods instead of file references, which may not work in all environments.
 
 ## Usage
 

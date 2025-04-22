@@ -2,6 +2,7 @@
   "name": "predictive-textarea",
   "version": "0.2.2",
   "description": "A rich text input with AI-powered autocomplete content predictions for React",
+  "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -39,12 +40,12 @@
     "clean": "rm -rf dist",
     "demo": "cd demo && yarn dev",
     "demo:build": "cd demo && yarn build",
-    "dev:demo": "yarn build && concurrently \"yarn watch\" \"yarn demo\"",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prepare-version": "tsx scripts/release-branch.ts prepare-version",
-    "create-release": "tsx scripts/release-branch.ts create-release"
+    "create-release": "tsx scripts/release-branch.ts create-release",
+    "setup-demo": "node scripts/setup-demo.js"
   },
   "peerDependencies": {
     "react": "^18.0.0",

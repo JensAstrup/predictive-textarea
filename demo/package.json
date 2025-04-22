@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node ../scripts/setup-demo.js",
     "build": "next build",
     "start": "next start"
   },
@@ -14,11 +15,11 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
+    "express": "^5.0.0",
     "lucide-react": "^0.344.0",
     "next": "^15.3.1",
     "openai": "^4.95.1",
-    "predictive-textarea": "link:..",
+    "predictive-textarea": "*",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
