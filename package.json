@@ -45,7 +45,7 @@
     "test:coverage": "jest --coverage",
     "prepare-version": "tsx scripts/release-branch.ts prepare-version",
     "create-release": "tsx scripts/release-branch.ts create-release",
-    "setup-demo": "node scripts/setup-demo.js"
+    "setup-demo": "tsx scripts/setup-demo.ts"
   },
   "peerDependencies": {
     "react": "^18.0.0",
