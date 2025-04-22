@@ -13,8 +13,6 @@ const demoDir = path.join(rootDir, 'demo');
 
 console.log('📦 Setting up predictive-textarea for demo...');
 
-// Check if we're in a Vercel environment
-const isVercel = process.env.VERCEL === '1';
 
 // Build the package
 try {
