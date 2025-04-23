@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "yalc:add": "yalc add predictive-textarea",
+    "yalc:update": "yalc update predictive-textarea"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.0",
@@ -18,7 +20,7 @@
     "lucide-react": "^0.344.0",
     "next": "^15.3.1",
     "openai": "^4.95.1",
-    "predictive-textarea": "0.2.2",
+    "predictive-textarea": "file:.yalc/predictive-textarea",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -35,7 +37,8 @@
     "eslint-plugin-react": "^7.37.5",
     "postcss": "^8.4.0",
     "tsx": "^4.19.3",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "yalc": "^1.0.0-pre.53"
   },
   "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
 }

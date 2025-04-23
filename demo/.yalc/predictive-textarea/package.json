@@ -1,0 +1,47 @@
+{
+  "name": "predictive-textarea",
+  "version": "0.2.2",
+  "description": "A rich text input with AI-powered autocomplete content predictions for React",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "npm run compile:esm && npm run compile:cjs",
+    "compile:esm": "tsc -p tsconfig.esm.json",
+    "compile:cjs": "tsc -p tsconfig.cjs.json",
+    "watch": "tsup --config tsup.config.ts --watch",
+    "dev": "cd ../dev && yarn dev",
+    "lint": "eslint src/**/*.ts*",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "prepare-version": "tsx scripts/release-branch.ts prepare-version",
+    "create-release": "tsx scripts/release-branch.ts create-release",
+    "yalc:publish": "yarn build && yalc publish",
+    "yalc:push": "yarn build && yalc push"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "openai": "^4.95.1",
+    "server-only": "^0.0.1",
+    "trie-search": "^2.2.0"
+  },
+  "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538",
+  "yalcSig": "2d9bb31ad501df92ca42a3d2aa6bdde2"
+}

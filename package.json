@@ -1,0 +1,15 @@
+{
+  "name": "predictive-textarea-root",
+  "private": true,
+  "scripts": {
+    "dev:demo": "cd demo && yarn dev",
+    "dev:package": "cd package && yarn watch",
+    "yalc:link": "cd package && yarn yalc:publish && cd ../demo && yarn yalc:add",
+    "yalc:update": "cd package && yarn yalc:push && cd ../demo && yarn yalc:update",
+    "build:package": "cd package && yarn build",
+    "build:demo": "cd demo && yarn build",
+    "build": "yarn build:package && yarn build:demo",
+    "test": "cd package && yarn test"
+  },
+  "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
+}
