@@ -1,72 +1,32 @@
-name: Deploy Demo to GitHub Pages
+name: Deploy Demo
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'demo/**'
-      - 'src/**'
-      - '.github/workflows/deploy-demo.yml'
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Publish Package"]
+    types:
+      - completed
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '20'
           cache: 'yarn'
-          cache-dependency-path: |
-            yarn.lock
-            demo/yarn.lock
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Install root dependencies
+        run: yarn install --immutable
 
-      - name: Install main package dependencies
-        run: yarn install --frozen-lockfile
+      - name: Update demo version
+        run: yarn update-demo-version
 
-      - name: Build main package
-        working-directory: src
-        run: yarn build
-
-      - name: Install demo dependencies
-        working-directory: demo
-        run: yarn install --frozen-lockfile
-
-      - name: Build demo
-        working-directory: demo
-        run: yarn build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: demo/dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Trigger Vercel deployment
+        run: |
+          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}

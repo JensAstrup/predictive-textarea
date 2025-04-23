@@ -1,0 +1,70 @@
+name: Publish Package
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Build package
+        run: yarn build
+
+      - name: Extract version and check if prerelease
+        id: package-info
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
+          
+          # Check if version is a prerelease (contains hyphen)
+          if [[ $VERSION == *-* ]]; then
+            # Extract prerelease identifier (alpha, beta, etc)
+            PREID=$(echo $VERSION | cut -d'-' -f2 | cut -d'.' -f1)
+            echo "IS_PRERELEASE=true" >> $GITHUB_OUTPUT
+            echo "PREID=${PREID}" >> $GITHUB_OUTPUT
+          else
+            echo "IS_PRERELEASE=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.package-info.outputs.VERSION }}
+          name: v${{ steps.package-info.outputs.VERSION }}
+          prerelease: ${{ steps.package-info.outputs.IS_PRERELEASE == 'true' }}
+          draft: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to NPM with tag
+        if: steps.package-info.outputs.IS_PRERELEASE == 'true'
+        run: yarn npm publish --tag ${{ steps.package-info.outputs.PREID }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to NPM as latest
+        if: steps.package-info.outputs.IS_PRERELEASE == 'false'
+        run: yarn npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

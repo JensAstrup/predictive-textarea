@@ -4,15 +4,18 @@ import { execa } from 'execa'
 import { Octokit } from 'octokit'
 import ora from 'ora'
 
+import { updateDemoVersion } from './update-demo-version'
 import { getNewVersion } from './utils/get-new-version'
 
 
 config({ path: '.env.local' })
 
+type VersionType = 'major' | 'minor' | 'patch' | 'premajor' | 'preminor' | 'prepatch' | 'prerelease'
+
 /**
  * Creates a new branch for version bump and pushes it
  */
-async function bumpVersion(versionType: string): Promise<string> {
+async function bumpVersion(versionType: string, preId?: string): Promise<string> {
   const { stdout: status } = await execa('git', ['status', '--porcelain'])
   if (status) {
     throw new Error('bumpVersion: Working directory is not clean. Please commit or stash changes.')
@@ -24,7 +27,14 @@ async function bumpVersion(versionType: string): Promise<string> {
   await execa('git', ['pull', 'origin', 'develop'])
 
   // Get the new version before creating the branch
-  await execa('yarn', ['version', versionType])
+  const versionArgs = ['version', versionType]
+
+  // Add prerelease identifier if provided
+  if (preId) {
+    versionArgs.push('--preid', preId)
+  }
+
+  await execa('yarn', versionArgs)
   const version = await getNewVersion()
   const versionBranch = `v${version}`
 
@@ -56,9 +66,12 @@ async function bumpVersion(versionType: string): Promise<string> {
     console.log(`No existing remote branch: ${versionBranch}`)
   }
 
+  // Update demo version to match the new package version
+  updateDemoVersion()
+
   // Create new branch and commit version bump
   await execa('git', ['checkout', '-b', versionBranch])
-  await execa('git', ['add', 'package.json'])
+  await execa('git', ['add', 'package.json', 'demo/package.json'])
   await execa('git', ['commit', '-m', `chore: bump version to ${version}`])
   await execa('git', ['push', 'origin', versionBranch])
 
@@ -91,23 +104,49 @@ async function prepareVersion(): Promise<void> {
   const program = new Command()
 
   program
-    .name('prepare-version')
-    .description('Create a version bump branch and PR to develop')
-    .argument('<type>', 'Version increment type: major, minor, or patch')
+    .version('1.0.0')
+    .option('--alpha', 'Use alpha prerelease tag')
+    .option('--beta', 'Use beta prerelease tag')
+    .option('--rc', 'Use release candidate tag')
+    .option('--preid <identifier>', 'Custom prerelease identifier')
     .parse(process.argv)
 
-  const versionType = program.args[0] as 'major' | 'minor' | 'patch'
-  if (!['major', 'minor', 'patch'].includes(versionType)) {
-    // Using process.stderr.write instead of console.error to avoid linter error
-    process.stderr.write('Version type must be one of: major, minor, patch\n')
+  const versionType = program.args[0] as VersionType
+  const validBaseTypes = ['major', 'minor', 'patch']
+
+  // Validate base version type
+  if (!validBaseTypes.includes(versionType)) {
+    process.stderr.write(`Version type must be one of: ${validBaseTypes.join(', ')}\n`)
     process.exit(1)
+  }
+
+  // Handle prerelease options
+  const opts = program.opts()
+  let preId: string | undefined
+  let preVersionType = versionType
+
+  if (opts.alpha) {
+    preId = 'alpha'
+    preVersionType = `pre${versionType}` as VersionType
+  }
+  else if (opts.beta) {
+    preId = 'beta'
+    preVersionType = `pre${versionType}` as VersionType
+  }
+  else if (opts.rc) {
+    preId = 'rc'
+    preVersionType = `pre${versionType}` as VersionType
+  }
+  else if (opts.preid) {
+    preId = opts.preid
+    preVersionType = `pre${versionType}` as VersionType
   }
 
   const spinner = ora('Starting version bump process').start()
 
   try {
     spinner.text = 'Creating version branch'
-    const version = await bumpVersion(versionType)
+    const version = await bumpVersion(preVersionType, preId)
 
     spinner.text = 'Creating pull request to develop'
     const pullRequestUrl = await createVersionPullRequest(version)

@@ -1466,7 +1466,7 @@ __metadata:
     next: "npm:^15.3.1"
     openai: "npm:^4.95.1"
     postcss: "npm:^8.4.0"
-    predictive-textarea: "file:../package.tgz"
+    predictive-textarea: "npm:0.2.2"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -3680,9 +3680,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"predictive-textarea@file:../package.tgz::locator=demo%40workspace%3A.":
+"predictive-textarea@npm:0.2.2":
   version: 0.2.2
-  resolution: "predictive-textarea@file:../package.tgz#../package.tgz::hash=67694b&locator=demo%40workspace%3A."
+  resolution: "predictive-textarea@npm:0.2.2"
   dependencies:
     openai: "npm:^4.95.1"
     server-only: "npm:^0.0.1"
@@ -3690,7 +3690,7 @@ __metadata:
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/445e26d9c01a2a0e24a8f4590b349e57a68ad8884a09044c49981b188d1084074ba2b4d047a8ddc45804714e255ebba11b4db104ef7a3a4f9d0b11a3fc6dc837
+  checksum: 10c0/cd2345763e9590ef5364cbc8b393c6af22e5724e371db1f6c750a96503e2cd8f781562bcdeae85a83693403eae7c86370da63a1d6fdf954221f8d4cbbe07e5af
   languageName: node
   linkType: hard
 
