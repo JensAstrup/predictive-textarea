@@ -25,9 +25,6 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "predictive-textarea": [
-        "../dist"
       ]
     }
   },
