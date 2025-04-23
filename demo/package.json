@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "cd .. && yarn build && cd demo && next build",
+    "build": "cd .. && yarn install && yarn build && cd demo && yarn install --force && next build",
     "start": "next start"
   },
   "dependencies": {
