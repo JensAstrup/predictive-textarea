@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "cd .. && yarn install && yarn build && cd demo && yarn install --force && next build",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {
@@ -18,7 +18,7 @@
     "lucide-react": "^0.344.0",
     "next": "^15.3.1",
     "openai": "^4.95.1",
-    "predictive-textarea": "github:JensAstrup/predictive-textarea#main",
+    "predictive-textarea": "0.2.2",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

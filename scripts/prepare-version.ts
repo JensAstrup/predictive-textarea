@@ -66,13 +66,13 @@ async function bumpVersion(versionType: string, preId?: string): Promise<string>
     console.log(`No existing remote branch: ${versionBranch}`)
   }
 
-  // Update demo version to match the new package version
+  // Update demo to use the GitHub repo link
   updateDemoVersion()
 
   // Create new branch and commit version bump
   await execa('git', ['checkout', '-b', versionBranch])
   await execa('git', ['add', 'package.json', 'demo/package.json'])
-  await execa('git', ['commit', '-m', `chore: bump version to ${version}`])
+  await execa('git', ['commit', '-m', `chore: bump version to ${version} and update demo dependency`])
   await execa('git', ['push', 'origin', versionBranch])
 
   return version

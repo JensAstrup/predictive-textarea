@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import '@types/node'
 
 // Get dirname equivalent in ESM
 const __filename = fileURLToPath(import.meta.url)
@@ -11,22 +12,21 @@ type PackageJson = {
   version?: string
 }
 
-function readPackageVersion(packagePath: string): string {
-  const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf-8')) as PackageJson
-  return packageJson.version || '0.0.0'
-}
-
 function updateDemoVersion(): void {
   const rootDir = path.resolve(__dirname, '..')
   const demoDir = path.join(rootDir, 'demo')
 
   // Read versions from both package.json files
-  const mainVersion = readPackageVersion(path.join(rootDir, 'package.json'))
   const demoPackagePath = path.join(demoDir, 'package.json')
   const demoPackageJson = JSON.parse(fs.readFileSync(demoPackagePath, 'utf-8')) as PackageJson
 
-  // Update the demo package.json with the new version
-  demoPackageJson.dependencies['predictive-textarea'] = mainVersion
+  // Get repo info from environment variables or use default
+  const repoOwner = process.env.GITHUB_REPO_OWNER || 'JensAstrup'
+  const repoName = process.env.GITHUB_REPO_NAME || 'predictive-textarea'
+  const branch = process.env.GITHUB_BRANCH || 'main'
+
+  // Update the demo package.json to use the GitHub repository link
+  demoPackageJson.dependencies['predictive-textarea'] = `github:${repoOwner}/${repoName}#${branch}`
 
   // Write the updated package.json
   fs.writeFileSync(
@@ -36,7 +36,7 @@ function updateDemoVersion(): void {
   )
 
   // Using process.stdout.write instead of console.log to avoid linter error
-  process.stdout.write(`✅ Updated demo dependency to version ${mainVersion}\n`)
+  process.stdout.write('✅ Updated demo dependency to use branch from GitHub\n')
 }
 
 // Execute if called directly

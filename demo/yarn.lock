@@ -1641,7 +1641,7 @@ __metadata:
     next: "npm:^15.3.1"
     openai: "npm:^4.95.1"
     postcss: "npm:^8.4.0"
-    predictive-textarea: "github:JensAstrup/predictive-textarea#main"
+    predictive-textarea: "github:JensAstrup/predictive-textarea#fix_deploy"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -3951,9 +3951,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"predictive-textarea@github:JensAstrup/predictive-textarea#main":
+"predictive-textarea@github:JensAstrup/predictive-textarea#fix_deploy":
   version: 0.2.2
-  resolution: "predictive-textarea@https://github.com/JensAstrup/predictive-textarea.git#commit=aa90a138ed37e305ffe4941c0bba320392aec4a0"
+  resolution: "predictive-textarea@https://github.com/JensAstrup/predictive-textarea.git#commit=11575d692d5ec207e24ae1d51d7abe303f88792b"
   dependencies:
     openai: "npm:^4.95.1"
     server-only: "npm:^0.0.1"
@@ -3961,7 +3961,7 @@ __metadata:
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/ffcc5793a10cc65af924407746ae06d0bec32eb3ffbe63581e6945a15c3b34d3a610100b8bf87d01f1f9df976a87a60debc327c15088429808aacaec8afb4442
+  checksum: 10c0/89f6a9e4035fc954b21b28975b58010c65c12944e21ed6b9f53728f9ee6ac6ced5963ec4a2e971c3b6c80cbf3a1b68f1cbe1b7c4ad62cb1c9f69fe4e90699855
   languageName: node
   linkType: hard
 
