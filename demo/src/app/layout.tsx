@@ -1,5 +1,6 @@
 import '../index.css'
 import '../textarea-styles.css'
+import { ThemeProvider } from '../components/theme-provider'
 
 export const metadata = {
   title: 'PredictiveTextarea Demo',
@@ -12,8 +13,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider defaultTheme="system" storageKey="predictive-textarea-theme">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 } 
