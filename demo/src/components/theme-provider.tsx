@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, useContext, useEffect, useState } from "react"
 
 type Theme = "dark" | "light" | "system"
@@ -14,7 +16,7 @@ type ThemeProviderState = {
 }
 
 const initialState: ThemeProviderState = {
-  theme: "dark",
+  theme: "system",
   setTheme: () => null,
 }
 
@@ -22,8 +24,8 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 function ThemeProvider({
   children,
-  defaultTheme = "dark",
-  storageKey = "vite-ui-theme",
+  defaultTheme = "system",
+  storageKey = "predictive-textarea-theme",
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
@@ -40,11 +42,29 @@ function ThemeProvider({
     root.classList.remove("light", "dark")
 
     if (theme === "system") {
-      root.classList.add("dark")
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+      root.classList.add(systemTheme)
       return
     }
 
     root.classList.add(theme)
+  }, [theme])
+
+  // Listen for system theme changes when "system" is active
+  useEffect(() => {
+    if (theme !== "system") return
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+
+    const handleChange = () => {
+      const root = window.document.documentElement
+      root.classList.remove("light", "dark")
+      root.classList.add(mediaQuery.matches ? "dark" : "light")
+    }
+
+    mediaQuery.addEventListener("change", handleChange)
+
+    return () => mediaQuery.removeEventListener("change", handleChange)
   }, [theme])
 
   const value = {
