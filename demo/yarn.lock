@@ -1466,7 +1466,7 @@ __metadata:
     next: "npm:^15.3.1"
     openai: "npm:^4.95.1"
     postcss: "npm:^8.4.0"
-    predictive-textarea: "link:.."
+    predictive-textarea: "npm:0.2.2"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -3680,11 +3680,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"predictive-textarea@link:..::locator=demo%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "predictive-textarea@link:..::locator=demo%40workspace%3A."
+"predictive-textarea@npm:0.2.2":
+  version: 0.2.2
+  resolution: "predictive-textarea@npm:0.2.2"
+  dependencies:
+    openai: "npm:^4.95.1"
+    server-only: "npm:^0.0.1"
+    trie-search: "npm:^2.2.0"
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 10c0/cd2345763e9590ef5364cbc8b393c6af22e5724e371db1f6c750a96503e2cd8f781562bcdeae85a83693403eae7c86370da63a1d6fdf954221f8d4cbbe07e5af
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "prelude-ls@npm:^1.2.1":
   version: 1.2.1
@@ -4059,6 +4067,13 @@ __metadata:
     parseurl: "npm:^1.3.3"
     send: "npm:^1.2.0"
   checksum: 10c0/30e2ed1dbff1984836cfd0c65abf5d3f3f83bcd696c99d2d3c97edbd4e2a3ff4d3f87108a7d713640d290a7b6fe6c15ddcbc61165ab2eaad48ea8d3b52c7f913
+  languageName: node
+  linkType: hard
+
+"server-only@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "server-only@npm:0.0.1"
+  checksum: 10c0/4704f0ef85da0be981af6d4ed8e739d39bcfd265b9c246a684060acda5642d0fdc6daffc2308e71e2682c5f508090978802eae0a77623c9b90a49f9ae68048d6
   languageName: node
   linkType: hard
 
@@ -4594,7 +4609,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"trie-search@npm:^2.1.0":
+"trie-search@npm:^2.1.0, trie-search@npm:^2.2.0":
   version: 2.2.0
   resolution: "trie-search@npm:2.2.0"
   dependencies:

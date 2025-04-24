@@ -1,6 +1,6 @@
 {
   "name": "predictive-textarea",
-  "version": "0.2.2",
+  "version": "0.2.3-alpha.1",
   "description": "A rich text input with AI-powered autocomplete content predictions for React",
   "type": "module",
   "main": "./dist/index.cjs",
