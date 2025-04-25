@@ -1,6 +1,6 @@
 {
   "name": "predictive-textarea",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A rich text input with AI-powered autocomplete content predictions for React",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -13,22 +13,22 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
     "./client": {
       "types": "./dist/client.d.ts",
       "import": "./dist/client.js",
-      "require": "./dist/client.js"
+      "require": "./dist/client.cjs"
     },
     "./openai": {
       "types": "./dist/openai/index.d.ts",
       "import": "./dist/openai/index.js",
-      "require": "./dist/openai/index.js"
+      "require": "./dist/openai/index.cjs"
     },
     "./openai/predict-input-content": {
       "types": "./dist/openai/predict-input-content.d.ts",
       "import": "./dist/openai/predict-input-content.js",
-      "require": "./dist/openai/predict-input-content.js"
+      "require": "./dist/openai/predict-input-content.cjs"
     }
   },
   "scripts": {

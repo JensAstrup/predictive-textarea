@@ -3,9 +3,10 @@
  */
 import 'openai/shims/node'
 import OpenAI from 'openai'
+
 import { predictInputContent } from '../../src/openai/predict-input-content'
 
-// Mock OpenAI
+
 jest.mock('openai')
 
 describe('predict-input-content', () => {
@@ -13,23 +14,19 @@ describe('predict-input-content', () => {
   const MockedOpenAI = OpenAI as jest.MockedClass<typeof OpenAI>
 
   beforeEach(() => {
-    // Clear all mocks before each test
     jest.clearAllMocks()
-    
-    // Setup OpenAI mock
+
     MockedOpenAI.mockImplementation(() => ({
       responses: {
         create: mockCreate
       }
     } as unknown as OpenAI))
 
-    // Reset environment variables
     process.env.OPENAI_API_KEY = 'test-api-key'
     process.env.OPENAI_MODEL = 'test-model'
   })
 
   afterEach(() => {
-    // Clean up environment variables
     delete process.env.OPENAI_API_KEY
     delete process.env.OPENAI_MODEL
   })
