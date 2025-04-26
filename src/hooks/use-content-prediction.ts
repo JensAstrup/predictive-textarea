@@ -57,6 +57,8 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
 
   const [inputText, setInputText] = useState<string>('')
   const [prediction, setPrediction] = useState<CompletionPrediction | null>(null)
+  // Tracks if a prediction fetch is currently in progress to prevent returning
+  // predictions until the fetch completes
   const [isFetching, setIsFetching] = useState<boolean>(false)
   const lastFetchTimeRef = useRef<number>(0)
 
