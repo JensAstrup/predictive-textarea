@@ -57,6 +57,9 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
 
   const [inputText, setInputText] = useState<string>('')
   const [prediction, setPrediction] = useState<CompletionPrediction | null>(null)
+  // Tracks if a prediction fetch is currently in progress to prevent returning
+  // predictions until the fetch completes
+  const [isFetching, setIsFetching] = useState<boolean>(false)
   const lastFetchTimeRef = useRef<number>(0)
 
   async function getContentPrediction(text: string): Promise<CompletionPrediction | null> {
@@ -77,7 +80,12 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
       // Cache the prediction using explicit mapping
       predictionCache.map(text, prediction)
 
-      return prediction
+      if (!isFetching) {
+        return prediction
+      }
+      else {
+        return null
+      }
     }
     catch {
       return null
@@ -93,17 +101,19 @@ function useContentPrediction(getContentPredictionFn: GetCompletionContentPredic
     if (now - lastFetchTimeRef.current < debounceTime || !inputText) {
       return
     }
-
+    setIsFetching(true)
     const timer = setTimeout(async () => {
       const prediction = await getContentPrediction(inputText)
       if (prediction) {
         setPrediction(prediction)
       }
       lastFetchTimeRef.current = Date.now()
+      setIsFetching(false)
     }, debounceTime)
 
     return () => {
       clearTimeout(timer)
+      setIsFetching(false)
     }
   }, [inputText, debounceTime])
 
