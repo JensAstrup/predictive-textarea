@@ -739,6 +739,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/analytics@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "@vercel/analytics@npm:1.5.0"
+  peerDependencies:
+    "@remix-run/react": ^2
+    "@sveltejs/kit": ^1 || ^2
+    next: ">= 13"
+    react: ^18 || ^19 || ^19.0.0-rc
+    svelte: ">= 4"
+    vue: ^3
+    vue-router: ^4
+  peerDependenciesMeta:
+    "@remix-run/react":
+      optional: true
+    "@sveltejs/kit":
+      optional: true
+    next:
+      optional: true
+    react:
+      optional: true
+    svelte:
+      optional: true
+    vue:
+      optional: true
+    vue-router:
+      optional: true
+  checksum: 10c0/43d33ea83b32f5203fec21b7f43c399e398f0c37d2dd341d522969e0e6ee23fd652a2766a4203a3ce573f711beee5ee1ab7d36316f767a4901160e3e96ee31e5
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:^3.0.0":
   version: 3.0.1
   resolution: "abbrev@npm:3.0.1"
@@ -1455,6 +1485,7 @@ __metadata:
     "@types/node": "npm:^20.11.0"
     "@types/react": "npm:^18.2.0"
     "@types/react-dom": "npm:^18.2.0"
+    "@vercel/analytics": "npm:^1.5.0"
     autoprefixer: "npm:^10.4.0"
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.0.0"
@@ -1466,7 +1497,7 @@ __metadata:
     next: "npm:^15.3.1"
     openai: "npm:^4.95.1"
     postcss: "npm:^8.4.0"
-    predictive-textarea: "npm:0.2.3-alpha.1"
+    predictive-textarea: "npm:0.2.3"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -3680,9 +3711,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"predictive-textarea@npm:0.2.3-alpha.1":
-  version: 0.2.3-alpha.1
-  resolution: "predictive-textarea@npm:0.2.3-alpha.1"
+"predictive-textarea@npm:0.2.3":
+  version: 0.2.3
+  resolution: "predictive-textarea@npm:0.2.3"
   dependencies:
     openai: "npm:^4.95.1"
     server-only: "npm:^0.0.1"
@@ -3690,7 +3721,7 @@ __metadata:
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/856d80d5e3ed260067d112f46fe9e2c7b99ccc28829c1e3a5beeca6bd256379fee949acc2125c1da31a1d402ab91c5913db4ca9f540eb97f37571e23a73b54d4
+  checksum: 10c0/d670f3533b461af4de58fa99f3f359d4d677a0fd336dae41881dc475772c7512a9a077db2a45d5aa6a4df7b69c763dbeac8f9ef84c78892655ac0218ea401a9b
   languageName: node
   linkType: hard
 
