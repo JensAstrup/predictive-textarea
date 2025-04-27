@@ -1,6 +1,7 @@
 import '../index.css'
 import '../textarea-styles.css'
 import { ThemeProvider } from '../components/theme-provider'
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: 'PredictiveTextarea Demo',
@@ -18,6 +19,7 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="system" storageKey="predictive-textarea-theme">
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
