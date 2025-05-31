@@ -101,8 +101,8 @@ describe('PredictiveTextarea', () => {
     })
 
     expect(mockClearPrediction).toHaveBeenCalled()
-    expect(mockOnInput).toHaveBeenCalled()
-
+    expect(mockOnInput).toHaveBeenCalledWith({ target: { value: 'New text' } })
+    
     const hiddenInput = screen.getByDisplayValue('New text')
     expect(hiddenInput).toHaveValue('New text')
   })
