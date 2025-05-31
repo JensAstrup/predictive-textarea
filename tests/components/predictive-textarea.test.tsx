@@ -84,10 +84,12 @@ describe('PredictiveTextarea', () => {
 
   it('should handle input changes', () => {
     mockIsAtLineEnd.mockReturnValue(false)
+    const mockOnInput = jest.fn()
 
     render(
       <PredictiveTextarea
         getContentPredictionFn={mockGetContentPredictionFn}
+        onInput={mockOnInput}
       />
     )
 
@@ -99,7 +101,8 @@ describe('PredictiveTextarea', () => {
     })
 
     expect(mockClearPrediction).toHaveBeenCalled()
-
+    expect(mockOnInput).toHaveBeenCalledWith({ target: { value: 'New text' } })
+    
     const hiddenInput = screen.getByDisplayValue('New text')
     expect(hiddenInput).toHaveValue('New text')
   })

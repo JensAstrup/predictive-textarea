@@ -40,6 +40,7 @@ function PredictiveTextarea({
   rows = 1,
   className,
   predictionClassName,
+  onInput,
   ...props
 }: PredictiveTextareaProps): React.ReactElement {
   const textareaRef = useRef<HTMLDivElement>(null)
@@ -74,6 +75,11 @@ function PredictiveTextarea({
     }
     else {
       clearPrediction()
+    }
+
+    // Call onInput with a textarea-like event shape
+    if (typeof onInput === 'function') {
+      onInput({ target: { value: newContent } } as { target: { value: string } })
     }
   }
 

@@ -1,7 +1,7 @@
 /**
  * Represents the props for the PredictiveTextarea component.
  */
-export interface PredictiveTextareaProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PredictiveTextareaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onInput'> {
   /**
    * A function that retrieves content predictions based on user input.
    * Usually, this will be some sort of API call to a language model.
@@ -54,6 +54,11 @@ export interface PredictiveTextareaProps extends React.HTMLAttributes<HTMLDivEle
    * Use this to style the prediction text with your own classes.
    */
   predictionClassName?: string
+
+  /**
+   * A function that is called on all input events.
+   */
+  onInput?: (event: { target: { value: string } }) => void
 }
 
 /**
