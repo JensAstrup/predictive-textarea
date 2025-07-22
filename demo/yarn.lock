@@ -1466,7 +1466,7 @@ __metadata:
     next: "npm:^15.3.1"
     openai: "npm:^4.95.1"
     postcss: "npm:^8.4.0"
-    predictive-textarea: "npm:0.2.3-alpha.1"
+    predictive-textarea: "npm:0.2.3"
     prism-react-renderer: "npm:^2.4.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -2091,14 +2091,15 @@ __metadata:
   linkType: hard
 
 "form-data@npm:^4.0.0":
-  version: 4.0.2
-  resolution: "form-data@npm:4.0.2"
+  version: 4.0.4
+  resolution: "form-data@npm:4.0.4"
   dependencies:
     asynckit: "npm:^0.4.0"
     combined-stream: "npm:^1.0.8"
     es-set-tostringtag: "npm:^2.1.0"
+    hasown: "npm:^2.0.2"
     mime-types: "npm:^2.1.12"
-  checksum: 10c0/e534b0cf025c831a0929bf4b9bbe1a9a6b03e273a8161f9947286b9b13bf8fb279c6944aae0070c4c311100c6d6dbb815cd955dc217728caf73fad8dc5b8ee9c
+  checksum: 10c0/373525a9a034b9d57073e55eab79e501a714ffac02e7a9b01be1c820780652b16e4101819785e1e18f8d98f0aee866cc654d660a435c378e16a72f2e7cac9695
   languageName: node
   linkType: hard
 
@@ -3680,9 +3681,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"predictive-textarea@npm:0.2.3-alpha.1":
-  version: 0.2.3-alpha.1
-  resolution: "predictive-textarea@npm:0.2.3-alpha.1"
+"predictive-textarea@npm:0.2.3":
+  version: 0.2.3
+  resolution: "predictive-textarea@npm:0.2.3"
   dependencies:
     openai: "npm:^4.95.1"
     server-only: "npm:^0.0.1"
@@ -3690,7 +3691,7 @@ __metadata:
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/856d80d5e3ed260067d112f46fe9e2c7b99ccc28829c1e3a5beeca6bd256379fee949acc2125c1da31a1d402ab91c5913db4ca9f540eb97f37571e23a73b54d4
+  checksum: 10c0/d670f3533b461af4de58fa99f3f359d4d677a0fd336dae41881dc475772c7512a9a077db2a45d5aa6a4df7b69c763dbeac8f9ef84c78892655ac0218ea401a9b
   languageName: node
   linkType: hard
 
